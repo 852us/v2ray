@@ -2272,7 +2272,7 @@ get_v2ray_config_info_link() {
 	echo
 	create_v2ray_config_text >/tmp/233blog_v2ray.txt
 	local random=$(echo $RANDOM-$RANDOM-$RANDOM | base64 -w 0)
-	local link=$(curl -s --upload-file /tmp/233blog_v2ray.txt "https://transfer.sh/${random}_233v2_v2ray.txt")
+	#local link=$(curl -s --upload-file /tmp/233blog_v2ray.txt "https://transfer.sh/${random}_233v2_v2ray.txt")
 	if [[ $link ]]; then
 		echo
 		echo "---------- V2Ray 配置信息链接-------------"
