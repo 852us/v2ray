@@ -10,9 +10,6 @@ _download_caddy_file() {
 		echo -e "$red 获取 Caddy 下载参数失败！$none" && exit 1
 	fi
 
-https://github.com/caddyserver/caddy/releases/download/v2.6.4/caddy_2.6.4_linux_amd64.tar.gz
-https://github.com/caddyserver/caddy/releases/download/v2.6.4/caddy_v2.6.4_linux_adm64.tar.gz
-
 	local caddy_download_link="https://github.com/caddyserver/caddy/releases/download/${caddy_ver}/caddy_${caddy_ver_num}_linux_${caddy_arch}.tar.gz"
 	mkdir -p $caddy_tmp
 

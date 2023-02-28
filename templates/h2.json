@@ -22,8 +22,8 @@
 		"tlsSettings": {
 			"certificates": [
 				{
-					"certificateFile": "/etc/v2ray/${magic}/v2ray/config/852us.com.cer",
-					"keyFile": "/etc/v2ray/${magic}/v2ray/config/852us.com.key"
+					"certificateFile": "/etc/v2ray/${magic}/v2ray/config/${magic_url}.cer",
+					"keyFile": "/etc/v2ray/${magic}/v2ray/config/${magic_url}.key"
 				}
 			]
 		}
