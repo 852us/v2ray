@@ -33,8 +33,6 @@ _download_v2ray_file() {
 }
 
 _install_v2ray_service() {
-	# cp -f "/usr/bin/v2ray/systemd/v2ray.service" "/lib/systemd/system/"
-	# sed -i "s/on-failure/always/" /lib/systemd/system/v2ray.service
 	cat >/lib/systemd/system/v2ray.service <<-EOF
 [Unit]
 Description=V2Ray Service

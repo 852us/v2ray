@@ -1,56 +1,56 @@
 # config file
 case $v2ray_transport in
 1)
-	v2ray_server_config_file="/etc/v2ray/233boy/v2ray/config/server/tcp.json"
-	v2ray_client_config_file="/etc/v2ray/233boy/v2ray/config/client/tcp.json"
+	v2ray_server_config_file="/etc/v2ray/${magic}/v2ray/config/server/tcp.json"
+	v2ray_client_config_file="/etc/v2ray/${magic}/v2ray/config/client/tcp.json"
 	;;
 2)
-	v2ray_server_config_file="/etc/v2ray/233boy/v2ray/config/server/http.json"
-	v2ray_client_config_file="/etc/v2ray/233boy/v2ray/config/client/http.json"
+	v2ray_server_config_file="/etc/v2ray/${magic}/v2ray/config/server/http.json"
+	v2ray_client_config_file="/etc/v2ray/${magic}/v2ray/config/client/http.json"
 	;;
 3)
-	v2ray_server_config_file="/etc/v2ray/233boy/v2ray/config/server/ws.json"
-	v2ray_client_config_file="/etc/v2ray/233boy/v2ray/config/client/ws.json"
+	v2ray_server_config_file="/etc/v2ray/${magic}/v2ray/config/server/ws.json"
+	v2ray_client_config_file="/etc/v2ray/${magic}/v2ray/config/client/ws.json"
 	;;
 4)
-	v2ray_server_config_file="/etc/v2ray/233boy/v2ray/config/server/ws.json"
-	v2ray_client_config_file="/etc/v2ray/233boy/v2ray/config/client/ws_tls.json"
+	v2ray_server_config_file="/etc/v2ray/${magic}/v2ray/config/server/ws.json"
+	v2ray_client_config_file="/etc/v2ray/${magic}/v2ray/config/client/ws_tls.json"
 	;;
 5)
-	v2ray_server_config_file="/etc/v2ray/233boy/v2ray/config/server/h2.json"
-	v2ray_client_config_file="/etc/v2ray/233boy/v2ray/config/client/h2.json"
+	v2ray_server_config_file="/etc/v2ray/${magic}/v2ray/config/server/h2.json"
+	v2ray_client_config_file="/etc/v2ray/${magic}/v2ray/config/client/h2.json"
 	;;
 [6-9] | 10 | 11)
-	v2ray_server_config_file="/etc/v2ray/233boy/v2ray/config/server/kcp.json"
-	v2ray_client_config_file="/etc/v2ray/233boy/v2ray/config/client/kcp.json"
+	v2ray_server_config_file="/etc/v2ray/${magic}/v2ray/config/server/kcp.json"
+	v2ray_client_config_file="/etc/v2ray/${magic}/v2ray/config/client/kcp.json"
 	;;
 1[2-7])
-	v2ray_server_config_file="/etc/v2ray/233boy/v2ray/config/server/quic.json"
-	v2ray_client_config_file="/etc/v2ray/233boy/v2ray/config/client/quic.json"
+	v2ray_server_config_file="/etc/v2ray/${magic}/v2ray/config/server/quic.json"
+	v2ray_client_config_file="/etc/v2ray/${magic}/v2ray/config/client/quic.json"
 	;;
 18)
-	v2ray_server_config_file="/etc/v2ray/233boy/v2ray/config/server/dynamic/tcp.json"
-	v2ray_client_config_file="/etc/v2ray/233boy/v2ray/config/client/tcp.json"
+	v2ray_server_config_file="/etc/v2ray/${magic}/v2ray/config/server/dynamic/tcp.json"
+	v2ray_client_config_file="/etc/v2ray/${magic}/v2ray/config/client/tcp.json"
 	;;
 19)
-	v2ray_server_config_file="/etc/v2ray/233boy/v2ray/config/server/dynamic/http.json"
-	v2ray_client_config_file="/etc/v2ray/233boy/v2ray/config/client/http.json"
+	v2ray_server_config_file="/etc/v2ray/${magic}/v2ray/config/server/dynamic/http.json"
+	v2ray_client_config_file="/etc/v2ray/${magic}/v2ray/config/client/http.json"
 	;;
 20)
-	v2ray_server_config_file="/etc/v2ray/233boy/v2ray/config/server/dynamic/ws.json"
-	v2ray_client_config_file="/etc/v2ray/233boy/v2ray/config/client/ws.json"
+	v2ray_server_config_file="/etc/v2ray/${magic}/v2ray/config/server/dynamic/ws.json"
+	v2ray_client_config_file="/etc/v2ray/${magic}/v2ray/config/client/ws.json"
 	;;
 2[1-6])
-	v2ray_server_config_file="/etc/v2ray/233boy/v2ray/config/server/dynamic/kcp.json"
-	v2ray_client_config_file="/etc/v2ray/233boy/v2ray/config/client/kcp.json"
+	v2ray_server_config_file="/etc/v2ray/${magic}/v2ray/config/server/dynamic/kcp.json"
+	v2ray_client_config_file="/etc/v2ray/${magic}/v2ray/config/client/kcp.json"
 	;;
 33)
-	v2ray_server_config_file="/etc/v2ray/233boy/v2ray/config/server/vless_ws.json"
-	v2ray_client_config_file="/etc/v2ray/233boy/v2ray/config/client/vless_ws_tls.json"
+	v2ray_server_config_file="/etc/v2ray/${magic}/v2ray/config/server/vless_ws.json"
+	v2ray_client_config_file="/etc/v2ray/${magic}/v2ray/config/client/vless_ws_tls.json"
 	;;
 *)
-	v2ray_server_config_file="/etc/v2ray/233boy/v2ray/config/server/dynamic/quic.json"
-	v2ray_client_config_file="/etc/v2ray/233boy/v2ray/config/client/quic.json"
+	v2ray_server_config_file="/etc/v2ray/${magic}/v2ray/config/server/dynamic/quic.json"
+	v2ray_client_config_file="/etc/v2ray/${magic}/v2ray/config/client/quic.json"
 	;;
 esac
 
