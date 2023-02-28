@@ -1,6 +1,6 @@
 #!/bin/bash
 # Updated by Paul on 2023-02-28
-_version="v0.1.5"
+_version="v0.1.6"
 
 red='\e[91m'
 green='\e[92m'
@@ -53,7 +53,7 @@ if [[ $(command -v yum) ]]; then
 
 fi
 
-backup="/etc/v2ray/233blog_v2ray_backup.conf"
+backup="/etc/v2ray/client_backup.conf"
 
 if [[ -f /usr/bin/v2ray/v2ray && -f /etc/v2ray/config.json ]] && [[ -f $backup && -d /etc/v2ray/${magic}/v2ray ]]; then
 	. $backup

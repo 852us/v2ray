@@ -28,7 +28,7 @@ if [[ $ws_path_status == "true" ]]; then
 	is_ws_path=true
 fi
 
-cat >/etc/v2ray/233blog_v2ray_backup.conf <<-EOF
+cat >/etc/v2ray/client_backup.conf <<-EOF
 # -----------------------------------
 # 警告...请不要修改或删除这个文件...谢谢
 # 警告...请不要修改或删除这个文件...谢谢
