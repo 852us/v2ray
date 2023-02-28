@@ -18,6 +18,7 @@ _cyan() { echo -e ${cyan}$*${none}; }
 
 magic="852us"
 magic_url="852us.com"
+
 cmd="apt-get"
 sys_bit=$(uname -m)
 

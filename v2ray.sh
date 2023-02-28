@@ -13,6 +13,7 @@ none='\e[0m'
 [[ $(id -u) != 0 ]] && echo -e " 哎呀……请使用 ${red}root ${none}用户运行 ${yellow}~(^_^) ${none}" && exit 1
 
 magic="852us"
+magic_url="852us.com"
 cmd="apt-get"
 sys_bit=$(uname -m)
 
