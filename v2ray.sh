@@ -2329,7 +2329,9 @@ update() {
 		echo
 		echo -e "$yellow 2. $none更新 V2Ray 管理脚本"
 		echo
-		read -p "$(echo -e "请选择 [${magenta}1-2$none]:")" _opt
+		echo -e "$yellow 3. $none更新 Caddy 程序"
+		echo
+		read -p "$(echo -e "请选择 [${magenta}1-3$none]:")" _opt
 		if [[ -z $_opt ]]; then
 			error
 		else
@@ -2574,6 +2576,8 @@ _help() {
 	${green}v2ray update $none更新 V2Ray
 
 	${green}v2ray update.sh $none更新 V2Ray 管理脚本
+
+	${green}v2ray update_caddy $none更新 Caddy 程序
 
 	${green}v2ray uninstall $none卸载 V2Ray
 "
