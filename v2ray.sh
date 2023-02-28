@@ -11,9 +11,7 @@ none='\e[0m'
 [[ $(id -u) != 0 ]] && echo -e " 哎呀……请使用 ${red}root ${none}用户运行 ${yellow}~(^_^) ${none}" && exit 1
 
 _version="v3.67"
-
 cmd="apt-get"
-
 sys_bit=$(uname -m)
 
 case $sys_bit in
@@ -55,13 +53,9 @@ fi
 backup="/etc/v2ray/233blog_v2ray_backup.conf"
 
 if [[ -f /usr/bin/v2ray/v2ray && -f /etc/v2ray/config.json ]] && [[ -f $backup && -d /etc/v2ray/233boy/v2ray ]]; then
-
 	. $backup
-
 elif [[ -f /usr/bin/v2ray/v2ray && -f /etc/v2ray/config.json ]] && [[ -f /etc/v2ray/233blog_v2ray_backup.txt && -d /etc/v2ray/233boy/v2ray ]]; then
-
 	. /etc/v2ray/233boy/v2ray/tools/v1xx_to_v3xx.sh
-
 else
 	echo -e " 哎呀哎呀…… ${red}出错咯...请重新安装V2Ray${none} ${yellow}~(^_^) ${none}" && exit 1
 fi
@@ -95,7 +89,6 @@ fi
 
 . /etc/v2ray/233boy/v2ray/src/init.sh
 systemd=true
-# _test=true
 
 # fix VMessAEAD
 if [[ ! $(grep 'run -config' /lib/systemd/system/v2ray.service)  && $v2ray_ver_v5 ]]; then
@@ -196,15 +189,16 @@ create_vmess_URL_config() {
 		EOF
 	fi
 }
+
 view_v2ray_config_info() {
 
 	_load v2ray-info.sh
 	_v2_args
 	_v2_info
 }
+
 get_shadowsocks_config() {
 	if [[ $shadowsocks ]]; then
-
 		while :; do
 			echo
 			echo -e "$yellow 1. $none查看 Shadowsocks 配置信息"
@@ -229,12 +223,12 @@ get_shadowsocks_config() {
 					;;
 				esac
 			fi
-
 		done
 	else
 		shadowsocks_config
 	fi
 }
+
 view_shadowsocks_config_info() {
 	if [[ $shadowsocks ]]; then
 		_load ss-info.sh
@@ -242,6 +236,7 @@ view_shadowsocks_config_info() {
 		shadowsocks_config
 	fi
 }
+
 get_shadowsocks_config_qr_link() {
 	if [[ $shadowsocks ]]; then
 		get_ip
@@ -268,11 +263,9 @@ get_shadowsocks_config_qr_ask() {
 			error
 		fi
 	done
-
 }
 change_shadowsocks_config() {
 	if [[ $shadowsocks ]]; then
-
 		while :; do
 			echo
 			echo -e "$yellow 1. $none修改 Shadowsocks 端口"
@@ -309,13 +302,12 @@ change_shadowsocks_config() {
 					;;
 				esac
 			fi
-
 		done
 	else
-
 		shadowsocks_config
 	fi
 }
+
 shadowsocks_config() {
 	echo
 	echo
@@ -351,9 +343,9 @@ shadowsocks_config() {
 		else
 			error
 		fi
-
 	done
 }
+
 shadowsocks_port_config() {
 	local random=$(shuf -i20001-65535 -n1)
 	while :; do
@@ -407,13 +399,11 @@ shadowsocks_port_config() {
 			error
 			;;
 		esac
-
 	done
 
 }
 
 shadowsocks_password_config() {
-
 	while :; do
 		echo -e "请输入 "$yellow"Shadowsocks"$none" 密码"
 		read -p "$(echo -e "(默认密码: ${cyan}233blog.com$none)"): " new_sspass
@@ -434,13 +424,10 @@ shadowsocks_password_config() {
 			break
 			;;
 		esac
-
 	done
-
 }
 
 shadowsocks_ciphers_config() {
-
 	while :; do
 		echo -e "请选择 "$yellow"Shadowsocks"$none" 加密协议 [${magenta}1-3$none]"
 		for ((i = 1; i <= ${#ciphers[*]}; i++)); do
@@ -465,7 +452,6 @@ shadowsocks_ciphers_config() {
 			error
 			;;
 		esac
-
 	done
 }
 
@@ -532,9 +518,9 @@ change_shadowsocks_port() {
 			error
 			;;
 		esac
-
 	done
 }
+
 change_shadowsocks_password() {
 	echo
 	while :; do
@@ -569,9 +555,7 @@ change_shadowsocks_password() {
 			break
 			;;
 		esac
-
 	done
-
 }
 
 change_shadowsocks_ciphers() {
@@ -612,13 +596,11 @@ change_shadowsocks_ciphers() {
 			error
 			;;
 		esac
-
 	done
-
 }
+
 disable_shadowsocks() {
 	echo
-
 	while :; do
 		echo -e "是否关闭 ${yellow}Shadowsocks${none} [${magenta}Y/N$none]"
 		read -p "$(echo -e "(默认 [${cyan}N$none]):") " y_n
@@ -648,9 +630,9 @@ disable_shadowsocks() {
 		else
 			error
 		fi
-
 	done
 }
+
 change_v2ray_config() {
 	local _menu=(
 		"修改 V2Ray 端口"
@@ -730,6 +712,7 @@ change_v2ray_config() {
 		fi
 	done
 }
+
 change_v2ray_port() {
 	if [[ $v2ray_transport == 4 ]]; then
 		echo
@@ -798,11 +781,10 @@ change_v2ray_port() {
 				error
 				;;
 			esac
-
 		done
 	fi
-
 }
+
 download_v2ray_config_ask() {
 	echo
 	while :; do
@@ -818,8 +800,8 @@ download_v2ray_config_ask() {
 			error
 		fi
 	done
-
 }
+
 change_v2ray_transport_ask() {
 	echo
 	while :; do
@@ -836,6 +818,7 @@ change_v2ray_transport_ask() {
 		fi
 	done
 }
+
 change_v2ray_transport() {
 	echo
 	while :; do
@@ -912,7 +895,6 @@ change_v2ray_transport() {
 				;;
 			esac
 		fi
-
 	done
 	pause
 
@@ -939,8 +921,8 @@ change_v2ray_transport() {
 		view_v2ray_config_info
 		# download_v2ray_config_ask
 	fi
-
 }
+
 old_transport() {
 	if [[ $v2ray_transport == [45] || $v2ray_transport == 33 ]]; then
 		if [[ $caddy && $caddy_pid ]]; then
@@ -1059,8 +1041,8 @@ tls_config() {
 			auto_tls_config
 		fi
 	fi
-
 }
+
 auto_tls_config() {
 	echo -e "
 
@@ -1127,7 +1109,6 @@ auto_tls_config() {
 				error
 			fi
 		fi
-
 	done
 }
 
@@ -1157,6 +1138,7 @@ path_config_ask() {
 		esac
 	done
 }
+
 path_config() {
 	echo
 	while :; do
@@ -1183,6 +1165,7 @@ path_config() {
 	done
 	proxy_site_config
 }
+
 proxy_site_config() {
 	echo
 	while :; do
@@ -1217,7 +1200,6 @@ install_caddy() {
 	_load download-caddy.sh
 	_download_caddy_file
 	_install_caddy_service
-
 }
 caddy_config() {
 	# local email=$(shuf -i1-10000000000 -n1)
@@ -1225,6 +1207,7 @@ caddy_config() {
 	# systemctl restart caddy
 	do_service restart caddy
 }
+
 v2ray_dynamic_port_start() {
 	echo
 	echo
@@ -1261,13 +1244,11 @@ v2ray_dynamic_port_start() {
 				echo
 				break
 			fi
-
 			;;
 		*)
 			error
 			;;
 		esac
-
 	done
 
 	if [[ $v2ray_dynamic_port_start_input -lt $v2ray_port ]]; then
@@ -1282,7 +1263,6 @@ v2ray_dynamic_port_start() {
 	if [[ $mtproto ]] && [[ $v2ray_dynamic_port_start_input -lt $mtproto_port ]]; then
 		lt_mtproto_port=true
 	fi
-
 }
 
 v2ray_dynamic_port_end() {
@@ -1337,10 +1317,9 @@ v2ray_dynamic_port_end() {
 			error
 			;;
 		esac
-
 	done
-
 }
+
 change_v2ray_dynamicport() {
 	if [[ $v2ray_transport -ge 18 && $v2ray_transport -ne 33 ]]; then
 		change_v2ray_dynamic_port_start
@@ -1382,6 +1361,7 @@ change_v2ray_dynamicport() {
 
 	fi
 }
+
 change_v2ray_dynamic_port_start() {
 	echo
 	echo
@@ -1418,13 +1398,11 @@ change_v2ray_dynamic_port_start() {
 				echo
 				break
 			fi
-
 			;;
 		*)
 			error
 			;;
 		esac
-
 	done
 
 	if [[ $v2ray_dynamic_port_start_input -lt $v2ray_port ]]; then
@@ -1493,10 +1471,9 @@ change_v2ray_dynamic_port_end() {
 			error
 			;;
 		esac
-
 	done
-
 }
+
 change_v2ray_id() {
 	echo
 	while :; do
@@ -1533,6 +1510,7 @@ change_v2ray_id() {
 		fi
 	done
 }
+
 change_domain() {
 	if [[ $v2ray_transport == [45] || $v2ray_transport == 33 ]] && [[ $caddy ]]; then
 		while :; do
@@ -1590,7 +1568,6 @@ change_domain() {
 					error
 				fi
 			fi
-
 		done
 	else
 		echo
@@ -1608,6 +1585,7 @@ change_domain() {
 		echo
 	fi
 }
+
 change_path_config() {
 	if [[ $v2ray_transport == [45] || $v2ray_transport == 33 ]] && [[ $caddy && $is_path ]]; then
 		echo
@@ -1682,8 +1660,8 @@ change_path_config() {
 		echo
 		change_v2ray_transport_ask
 	fi
-
 }
+
 change_proxy_site_config() {
 	if [[ $v2ray_transport == [45] || $v2ray_transport == 33 ]] && [[ $caddy && $is_path ]]; then
 		echo
@@ -1759,13 +1737,11 @@ change_proxy_site_config() {
 		echo
 		change_v2ray_transport_ask
 	fi
-
 }
+
 domain_check() {
 	# test_domain=$(dig $new_domain +short)
 	test_domain=$(ping $new_domain -c 1 -W 2 | head -1)
-	# test_domain=$(wget -qO- --header='accept: application/dns-json' "https://cloudflare-dns.com/dns-query?name=$new_domain&type=A" | grep -oE "([0-9]{1,3}\.){3}[0-9]{1,3}" | head -1)
-	# test_domain=$(curl -sH 'accept: application/dns-json' "https://cloudflare-dns.com/dns-query?name=$new_domain&type=A" | grep -oE "([0-9]{1,3}\.){3}[0-9]{1,3}" | head -1)
 	if [[ ! $(echo $test_domain | grep $ip) ]]; then
 		echo
 		echo -e "$red 检测域名解析错误....$none"
@@ -1779,10 +1755,10 @@ domain_check() {
 		exit 1
 	fi
 }
+
 disable_path() {
 	if [[ $v2ray_transport == [45] || $v2ray_transport == 33 ]] && [[ $caddy && $is_path ]]; then
 		echo
-
 		while :; do
 			echo -e "是否关闭 ${yellow}网站伪装 和 路径分流${none} [${magenta}Y/N$none]"
 			read -p "$(echo -e "(默认 [${cyan}N$none]):") " y_n
@@ -1810,7 +1786,6 @@ disable_path() {
 			else
 				error
 			fi
-
 		done
 	else
 		echo
@@ -1832,9 +1807,9 @@ disable_path() {
 		echo
 		echo -e " 必须为 WebSocket + TLS 或 HTTP/2 传输协议, 自动配置 TLS = ${cyan}打开$none, 路径分流 = ${cyan}打开$none, 才能修改"
 		echo
-
 	fi
 }
+
 blocked_hosts() {
 	if [[ $ban_ad ]]; then
 		local _info="$green已开启$none"
@@ -1909,8 +1884,8 @@ blocked_hosts() {
 			esac
 		fi
 	done
-
 }
+
 change_v2ray_alterId() {
 	echo
 	while :; do
@@ -1986,6 +1961,7 @@ custom_uuid() {
 		esac
 	done
 }
+
 v2ray_service() {
 	while :; do
 		echo
@@ -2031,6 +2007,7 @@ v2ray_service() {
 		fi
 	done
 }
+
 start_v2ray() {
 	if [[ $v2ray_pid ]]; then
 		echo
@@ -2049,9 +2026,9 @@ start_v2ray() {
 			echo -e "${green} V2Ray 已启动$none"
 			echo
 		fi
-
 	fi
 }
+
 stop_v2ray() {
 	if [[ $v2ray_pid ]]; then
 		# systemctl stop v2ray
@@ -2065,6 +2042,7 @@ stop_v2ray() {
 		echo
 	fi
 }
+
 restart_v2ray() {
 	# systemctl restart v2ray
 	service v2ray restart >/dev/null 2>&1
@@ -2078,18 +2056,21 @@ restart_v2ray() {
 		echo
 	fi
 }
+
 view_v2ray_log() {
 	echo
 	echo -e "$green 按 Ctrl + C 即可退出...$none"
 	echo
 	tail -f /var/log/v2ray/access.log
 }
+
 view_v2ray_error_log() {
 	echo
 	echo -e "$green 按 Ctrl + C 即可退出...$none"
 	echo
 	tail -f /var/log/v2ray/error.log
 }
+
 download_v2ray_config() {
 	while :; do
 		echo
@@ -2129,6 +2110,7 @@ download_v2ray_config() {
 		fi
 	done
 }
+
 get_v2ray_config() {
 	config
 	echo
@@ -2166,16 +2148,15 @@ get_v2ray_config() {
 		fi
 	done
 	[[ -f $tmpfile ]] && rm -rf $tmpfile
-
 }
+
 get_v2ray_config_link() {
 	_load client_file.sh
 	_get_client_file
 }
+
 create_v2ray_config_text() {
-
 	get_transport_args
-
 	echo
 	echo
 	echo "---------- V2Ray 配置信息 -------------"
@@ -2266,6 +2247,7 @@ create_v2ray_config_text() {
 	echo "V2Ray 客户端使用教程: https://233v2.com/post/4/"
 	echo
 }
+
 get_v2ray_config_info_link() {
 	echo
 	echo -e "$green 正在生成链接.... 稍等片刻即可....$none"
@@ -2292,13 +2274,13 @@ get_v2ray_config_info_link() {
 	fi
 	rm -rf /tmp/233blog_v2ray.txt
 }
+
 get_v2ray_config_qr_link() {
-
 	create_vmess_URL_config
-
 	_load qr.sh
 	_qr_create
 }
+
 get_v2ray_vmess_URL_link() {
 	create_vmess_URL_config
 	if [[ $v2ray_transport == 33 ]]; then
@@ -2315,6 +2297,7 @@ get_v2ray_vmess_URL_link() {
 	echo
 	rm -rf /etc/v2ray/vmess_qr.json
 }
+
 other() {
 	while :; do
 		echo
@@ -2336,6 +2319,7 @@ other() {
 		fi
 	done
 }
+
 install_bbr() {
 	local test1=$(sed -n '/net.ipv4.tcp_congestion_control/p' /etc/sysctl.conf)
 	local test2=$(sed -n '/net.core.default_qdisc/p' /etc/sysctl.conf)
@@ -2378,15 +2362,17 @@ update() {
 		fi
 	done
 }
+
 update_v2ray() {
 	_load download-v2ray.sh
 	_update_v2ray_version
 }
+
 update_v2ray.sh() {
 	if [[ $_test ]]; then
-		local latest_version=$(curl -H 'Cache-Control: no-cache' -s -L "https://raw.githubusercontent.com/233boy/v2ray/test/v2ray.sh" | grep '_version' -m1 | cut -d\" -f2)
+		local latest_version=$(curl -H 'Cache-Control: no-cache' -s -L "https://raw.githubusercontent.com/852us/v2ray/test/v2ray.sh" | grep '_version' -m1 | cut -d\" -f2)
 	else
-		local latest_version=$(curl -H 'Cache-Control: no-cache' -s -L "https://raw.githubusercontent.com/233boy/v2ray/master/v2ray.sh" | grep '_version' -m1 | cut -d\" -f2)
+		local latest_version=$(curl -H 'Cache-Control: no-cache' -s -L "https://raw.githubusercontent.com/852us/v2ray/master/v2ray.sh" | grep '_version' -m1 | cut -d\" -f2)
 	fi
 
 	if [[ ! $latest_version ]]; then
@@ -2416,11 +2402,12 @@ update_v2ray.sh() {
 		echo -e "$green 更新成功啦...当前 V2Ray 管理脚本 版本: ${cyan}$latest_version$none"
 		echo
 	fi
-
 }
+
 uninstall_v2ray() {
 	_load uninstall.sh
 }
+
 config() {
 	_load config.sh
 
@@ -2435,6 +2422,7 @@ config() {
 	fi
 	do_service restart v2ray
 }
+
 backup_config() {
 	for keys in $*; do
 		case $keys in
@@ -2534,30 +2522,21 @@ backup_config() {
 }
 
 get_ip() {
-	# ip=$(curl -s https://ipinfo.io/ip)
-	# [[ -z $ip ]] && ip=$(curl -s https://api.ip.sb/ip)
-	# [[ -z $ip ]] && ip=$(curl -s https://api.ipify.org)
-	# [[ -z $ip ]] && ip=$(curl -s https://ip.seeip.org)
-	# [[ -z $ip ]] && ip=$(curl -s https://ifconfig.co/ip)
-	# [[ -z $ip ]] && ip=$(curl -s https://api.myip.com | grep -oE "([0-9]{1,3}\.){3}[0-9]{1,3}")
-	# [[ -z $ip ]] && ip=$(curl -s icanhazip.com)
-	# [[ -z $ip ]] && ip=$(curl -s myip.ipip.net | grep -oE "([0-9]{1,3}\.){3}[0-9]{1,3}")
+	# ip=$(curl -s https://ifconfig.me/)
 	export "$(wget -4 -qO- https://dash.cloudflare.com/cdn-cgi/trace | grep ip=)" >/dev/null 2>&1
 	[[ -z $ip ]] && export "$(wget -6 -qO- https://dash.cloudflare.com/cdn-cgi/trace | grep ip=)" >/dev/null 2>&1
 	[[ -z $ip ]] && echo -e "\n$red 获取IP失败, 这垃圾小鸡扔了吧！$none\n" && exit
 }
 
 error() {
-
 	echo -e "\n$red 输入错误！$none\n"
-
 }
 
 pause() {
-
 	read -rsp "$(echo -e "按 $green Enter 回车键 $none 继续....或按 $red Ctrl + C $none 取消.")" -d $'\n'
 	echo
 }
+
 do_service() {
 	if [[ $systemd ]]; then
 		systemctl $1 $2
@@ -2565,6 +2544,7 @@ do_service() {
 		service $2 $1
 	fi
 }
+
 _help() {
 	echo
 	echo "........... V2Ray 管理脚本帮助信息 by 233v2.com .........."
@@ -2604,6 +2584,7 @@ _help() {
 	${green}v2ray uninstall $none卸载 V2Ray
 "
 }
+
 menu() {
 	clear
 	while :; do

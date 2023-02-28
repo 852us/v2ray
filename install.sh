@@ -20,22 +20,10 @@ cmd="apt-get"
 sys_bit=$(uname -m)
 
 case $sys_bit in
-# i[36]86)
-# 	v2ray_bit="32"
-# 	caddy_arch="386"
-# 	;;
 'amd64' | x86_64)
 	v2ray_bit="64"
 	caddy_arch="amd64"
 	;;
-# *armv6*)
-# 	v2ray_bit="arm32-v6"
-# 	caddy_arch="arm6"
-# 	;;
-# *armv7*)
-# 	v2ray_bit="arm32-v7a"
-# 	caddy_arch="arm7"
-# 	;;
 *aarch64* | *armv8*)
 	v2ray_bit="arm64-v8a"
 	caddy_arch="arm64"
@@ -51,21 +39,15 @@ esac
 
 # 笨笨的检测方法
 if [[ $(command -v apt-get) || $(command -v yum) ]] && [[ $(command -v systemctl) ]]; then
-
 	if [[ $(command -v yum) ]]; then
-
 		cmd="yum"
-
 	fi
-
 else
-
 	echo -e " 
 	哈哈……这个 ${red}辣鸡脚本${none} 不支持你的系统。 ${yellow}(-_-) ${none}
 
 	备注: 仅支持 Ubuntu 16+ / Debian 8+ / CentOS 7+ 系统
 	" && exit 1
-
 fi
 
 uuid=$(cat /proc/sys/kernel/random/uuid)
@@ -75,7 +57,6 @@ v2ray_client_config="/etc/v2ray/233blog_v2ray_config.json"
 backup="/etc/v2ray/233blog_v2ray_backup.conf"
 _v2ray_sh="/usr/local/sbin/v2ray"
 systemd=true
-# _test=true
 
 transport=(
 	TCP
@@ -150,7 +131,6 @@ _sys_time() {
 	[[ $IS_OPENV ]] && pause
 }
 v2ray_config() {
-	# clear
 	echo
 	while :; do
 		echo -e "请选择 "$yellow"V2Ray"$none" 传输协议 [${magenta}1-${#transport[*]}$none]"
@@ -158,10 +138,8 @@ v2ray_config() {
 		for ((i = 1; i <= ${#transport[*]}; i++)); do
 			Stream="${transport[$i - 1]}"
 			if [[ "$i" -le 9 ]]; then
-				# echo
 				echo -e "$yellow  $i. $none${Stream}"
 			else
-				# echo
 				echo -e "$yellow $i. $none${Stream}"
 			fi
 		done
@@ -220,7 +198,6 @@ v2ray_port_config() {
 }
 
 v2ray_dynamic_port_start() {
-
 	while :; do
 		echo -e "请输入 "$yellow"V2Ray 动态端口开始 "$none"范围 ["$magenta"1-65535"$none"]"
 		read -p "$(echo -e "(默认开始端口: ${cyan}10000$none):")" v2ray_dynamic_port_start_input
@@ -245,7 +222,6 @@ v2ray_dynamic_port_start() {
 			error
 			;;
 		esac
-
 	done
 
 	if [[ $v2ray_dynamic_port_start_input -lt $v2ray_port ]]; then
@@ -262,7 +238,6 @@ v2ray_dynamic_port_end() {
 		[ -z $v2ray_dynamic_port_end_input ] && v2ray_dynamic_port_end_input=20000
 		case $v2ray_dynamic_port_end_input in
 		[1-9] | [1-9][0-9] | [1-9][0-9][0-9] | [1-9][0-9][0-9][0-9] | [1-5][0-9][0-9][0-9][0-9] | 6[0-4][0-9][0-9][0-9] | 65[0-4][0-9][0-9] | 655[0-3][0-5])
-
 			if [[ $v2ray_dynamic_port_end_input -le $v2ray_dynamic_port_start_input ]]; then
 				echo
 				echo " 不能小于或等于 V2Ray 动态端口开始范围"
@@ -294,7 +269,6 @@ v2ray_dynamic_port_end() {
 }
 
 tls_config() {
-
 	echo
 	local random=$(shuf -i20001-65535 -n1)
 	while :; do
@@ -349,7 +323,6 @@ tls_config() {
 	echo
 
 	while :; do
-
 		read -p "$(echo -e "(是否已经正确解析: [${magenta}Y$none]):") " record
 		if [[ -z "$record" ]]; then
 			error
@@ -366,7 +339,6 @@ tls_config() {
 				error
 			fi
 		fi
-
 	done
 
 	if [[ $v2ray_transport -eq 4 ]]; then
@@ -395,7 +367,6 @@ auto_tls_config() {
 	echo
 
 	while :; do
-
 		read -p "$(echo -e "(是否自动配置 TLS: [${magenta}Y/N$none]):") " auto_install_caddy
 		if [[ -z "$auto_install_caddy" ]]; then
 			error
@@ -421,7 +392,6 @@ auto_tls_config() {
 				error
 			fi
 		fi
-
 	done
 }
 path_config_ask() {
@@ -540,10 +510,9 @@ blocked_hosts() {
 		esac
 	done
 }
+
 shadowsocks_config() {
-
 	echo
-
 	while :; do
 		echo -e "是否配置 ${yellow}Shadowsocks${none} [${magenta}Y/N$none]"
 		read -p "$(echo -e "(默认 [${cyan}N$none]):") " install_shadowsocks
@@ -558,7 +527,6 @@ shadowsocks_config() {
 		else
 			error
 		fi
-
 	done
 
 }
@@ -613,8 +581,8 @@ shadowsocks_port_config() {
 
 	shadowsocks_password_config
 }
-shadowsocks_password_config() {
 
+shadowsocks_password_config() {
 	while :; do
 		echo -e "请输入 "$yellow"Shadowsocks"$none" 密码"
 		read -p "$(echo -e "(默认密码: ${cyan}233blog.com$none)"): " sspass
@@ -635,13 +603,12 @@ shadowsocks_password_config() {
 			break
 			;;
 		esac
-
 	done
 
 	shadowsocks_ciphers_config
 }
-shadowsocks_ciphers_config() {
 
+shadowsocks_ciphers_config() {
 	while :; do
 		echo -e "请选择 "$yellow"Shadowsocks"$none" 加密协议 [${magenta}1-${#ciphers[*]}$none]"
 		for ((i = 1; i <= ${#ciphers[*]}; i++)); do
@@ -666,7 +633,6 @@ shadowsocks_ciphers_config() {
 			error
 			;;
 		esac
-
 	done
 	pause
 }
@@ -736,15 +702,7 @@ install_info() {
 }
 
 domain_check() {
-	# if [[ $cmd == "yum" ]]; then
-	# 	yum install bind-utils -y
-	# else
-	# 	$cmd install dnsutils -y
-	# fi
-	# test_domain=$(dig $domain +short)
 	test_domain=$(ping $domain -c 1 -W 2 | head -1)
-	# test_domain=$(wget -qO- --header='accept: application/dns-json' "https://cloudflare-dns.com/dns-query?name=$domain&type=A" | grep -oE "([0-9]{1,3}\.){3}[0-9]{1,3}" | head -1)
-	# test_domain=$(curl -sH 'accept: application/dns-json' "https://cloudflare-dns.com/dns-query?name=$domain&type=A" | grep -oE "([0-9]{1,3}\.){3}[0-9]{1,3}" | head -1)
 	if [[ ! $(echo $test_domain | grep $ip) ]]; then
 		echo
 		echo -e "$red 检测域名解析错误....$none"
@@ -836,28 +794,9 @@ config() {
 		v2ray_dynamicPort_end=${v2ray_dynamic_port_end_input}
 	fi
 	_load config.sh
-
-	# if [[ $cmd == "apt-get" ]]; then
-	# 	cat >/etc/network/if-pre-up.d/iptables <<-EOF
-	# 		#!/bin/sh
-	# 		/sbin/iptables-restore < /etc/iptables.rules.v4
-	# 		/sbin/ip6tables-restore < /etc/iptables.rules.v6
-	# 	EOF
-	# 	chmod +x /etc/network/if-pre-up.d/iptables
-	# 	# else
-	# 	# 	[ $(pgrep "firewall") ] && systemctl stop firewalld
-	# 	# 	systemctl mask firewalld
-	# 	# 	systemctl disable firewalld
-	# 	# 	systemctl enable iptables
-	# 	# 	systemctl enable ip6tables
-	# 	# 	systemctl start iptables
-	# 	# 	systemctl start ip6tables
-	# fi
-
 	# systemctl restart v2ray
 	do_service restart v2ray
 	backup_config
-
 }
 
 backup_config() {
@@ -878,30 +817,21 @@ backup_config() {
 }
 
 get_ip() {
-	# ip=$(curl -s https://ipinfo.io/ip)
-	# [[ -z $ip ]] && ip=$(curl -s https://api.ip.sb/ip)
-	# [[ -z $ip ]] && ip=$(curl -s https://api.ipify.org)
-	# [[ -z $ip ]] && ip=$(curl -s https://ip.seeip.org)
-	# [[ -z $ip ]] && ip=$(curl -s https://ifconfig.co/ip)
-	# [[ -z $ip ]] && ip=$(curl -s https://api.myip.com | grep -oE "([0-9]{1,3}\.){3}[0-9]{1,3}")
-	# [[ -z $ip ]] && ip=$(curl -s icanhazip.com)
-	# [[ -z $ip ]] && ip=$(curl -s myip.ipip.net | grep -oE "([0-9]{1,3}\.){3}[0-9]{1,3}")
+	# ip=$(curl -s https://ifconfig.me/)
 	export "$(wget -4 -qO- https://dash.cloudflare.com/cdn-cgi/trace | grep ip=)" >/dev/null 2>&1
 	[[ -z $ip ]] && export "$(wget -6 -qO- https://dash.cloudflare.com/cdn-cgi/trace | grep ip=)" >/dev/null 2>&1
 	[[ -z $ip ]] && echo -e "\n$red 获取IP失败, 这垃圾小鸡扔了吧！$none\n" && exit
 }
 
 error() {
-
 	echo -e "\n$red 输入错误！$none\n"
-
 }
 
 pause() {
-
 	read -rsp "$(echo -e "按 $green Enter 回车键 $none 继续....或按 $red Ctrl + C $none 取消.")" -d $'\n'
 	echo
 }
+
 do_service() {
 	if [[ $systemd ]]; then
 		systemctl $1 $2
@@ -909,6 +839,7 @@ do_service() {
 		service $2 $1
 	fi
 }
+
 show_config_info() {
 	clear
 	_load v2ray-info.sh
@@ -951,16 +882,12 @@ install() {
 	fi
 	[[ $caddy ]] && install_caddy
 
-	## bbr
-	# _load bbr.sh
-	# _try_enable_bbr
-
 	get_ip
 	config
 	show_config_info
 }
-uninstall() {
 
+uninstall() {
 	if [[ -f /usr/bin/v2ray/v2ray && -f /etc/v2ray/config.json ]] && [[ -f $backup && -d /etc/v2ray/233boy/v2ray ]]; then
 		. $backup
 		if [[ $mark ]]; then
@@ -970,7 +897,6 @@ uninstall() {
 			echo -e " $yellow输入 ${cyan}v2ray uninstall${none} $yellow即可卸载${none}"
 			echo
 		fi
-
 	elif [[ -f /usr/bin/v2ray/v2ray && -f /etc/v2ray/config.json ]] && [[ -f /etc/v2ray/233blog_v2ray_backup.txt && -d /etc/v2ray/233boy/v2ray ]]; then
 		echo
 		echo -e " $yellow输入 ${cyan}v2ray uninstall${none} $yellow即可卸载${none}"
@@ -982,7 +908,6 @@ uninstall() {
 		备注...仅支持卸载使用我 (233v2.com) 提供的 V2Ray 一键安装脚本
 		" && exit 1
 	fi
-
 }
 
 args=$1
