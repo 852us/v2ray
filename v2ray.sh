@@ -1,6 +1,6 @@
 #!/bin/bash
 # Updated by Paul on 2023-02-28
-_version="v0.3.0"
+_version="v0.3.1"
 
 red='\e[91m'
 green='\e[92m'
