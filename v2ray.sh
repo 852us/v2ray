@@ -2800,7 +2800,6 @@ reuuid)
 	config
 	clear
 	view_v2ray_config_info
-	# download_v2ray_config_ask
 	;;
 v | version)
 	echo
