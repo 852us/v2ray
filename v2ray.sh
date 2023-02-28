@@ -78,6 +78,8 @@ v2ray_pid=$(pgrep -f /usr/bin/v2ray/v2ray)
 caddy_pid=$(pgrep -f /usr/local/bin/caddy)
 _v2ray_sh="/usr/local/sbin/v2ray"
 
+caddy_ver="$(/usr/local/bin/caddy version | cut -d " " -f1)"
+
 /usr/bin/v2ray/v2ray -version >/dev/null 2>&1
 if [[ $? == 0 ]]; then
 	v2ray_ver="$(/usr/bin/v2ray/v2ray -version | head -n 1 | cut -d " " -f2)"

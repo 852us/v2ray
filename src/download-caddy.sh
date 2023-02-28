@@ -88,12 +88,10 @@ _update_caddy_version() {
 		echo
 		echo -e " $green 咦...发现新版本耶....正在拼命更新.......$none"
 		echo
-		_download_v2ray_file
-		do_service restart v2ray
+		_download_caddy_file
+		do_service restart caddy
 		echo
 		echo -e " $green 更新成功啦...当前 Caddy 版本: ${cyan}${caddy_latest_ver}$none"
-		echo
-		echo -e " $yellow 温馨提示: 为了避免出现莫名其妙的问题...V2Ray 客户端的版本最好和服务器的版本保持一致$none"
 		echo
 	else
 		echo
