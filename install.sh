@@ -851,7 +851,10 @@ show_config_info() {
 	_v2_args
 	_v2_info
 	_load ss-info.sh
+}
 
+get_v2ray_vmess_URL_link() {
+  v2ray url
 }
 
 install() {
@@ -890,6 +893,7 @@ install() {
 	get_ip
 	config
 	show_config_info
+	get_v2ray_vmess_URL_link
 }
 
 uninstall() {
