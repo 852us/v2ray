@@ -1,6 +1,6 @@
 _download_caddy_file() {
   caddy_repos_url="https://api.github.com/repos/caddyserver/caddy/releases/latest?v=$RANDOM"
-	caddy_latest_ver="$(curl -s $caddy_repos_url | grep 'tag_name' | cut -d\" -f4)"
+  caddy_latest_ver="$(curl -s $caddy_repos_url | grep 'tag_name' | cut -d\" -f4)"
 
 	caddy_tmp="/tmp/install_caddy/"
 	caddy_tmp_file="/tmp/install_caddy/caddy.tar.gz"
