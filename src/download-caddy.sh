@@ -9,9 +9,8 @@ _download_caddy_file() {
 	if [[ ! ${caddy_arch} ]]; then
 		echo -e "$red 获取 Caddy 下载参数失败！$none" && exit 1
 	fi
-
-	# local caddy_download_link="https://github.com/caddyserver/caddy/releases/download/${caddy_ver}/caddy_${caddy_ver_num}_linux_${caddy_arch}.tar.gz"
-	local caddy_download_link="https://github.com/caddyserver/caddy/releases/download/v2.6.2/caddy_2.6.2_linux_${caddy_arch}.tar.gz"
+	# local caddy_download_link="https://github.com/caddyserver/caddy/releases/download/v2.6.2/caddy_2.6.2_linux_${caddy_arch}.tar.gz"
+	local caddy_download_link="https://github.com/caddyserver/caddy/releases/download/${caddy_ver}/caddy_${caddy_ver_num}_linux_${caddy_arch}.tar.gz"
 	mkdir -p $caddy_tmp
 
 	if ! wget --no-check-certificate -O "$caddy_tmp_file" $caddy_download_link; then
