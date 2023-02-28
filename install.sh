@@ -924,7 +924,6 @@ _gitbranch=$2
 [ -z $1 ] && args="online"
 case $args in
 online)
-	#hello world
 	[[ -z $_gitbranch ]] && _gitbranch="master"
 	;;
 local)
