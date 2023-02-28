@@ -17,7 +17,7 @@ _get_latest_version() {
 _download_caddy_file() {
   caddy_repos_url="https://api.github.com/repos/caddyserver/caddy/releases/latest?v=$RANDOM"
   caddy_latest_ver="$(curl -s $caddy_repos_url | grep 'tag_name' | cut -d\" -f4)" # awk -F \" '{print $4}'
-  caddy_latest_ver_num=$(echo $caddy_ver | sed 's/v//')
+  caddy_latest_ver_num=$(echo $caddy_latest_ver | sed 's/v//')
 
 	caddy_tmp="/tmp/install_caddy/"
 	caddy_tmp_file="/tmp/install_caddy/caddy.tar.gz"
@@ -25,7 +25,7 @@ _download_caddy_file() {
 	if [[ ! ${caddy_arch} ]]; then
 		echo -e "$red 获取 Caddy 下载参数失败！$none" && exit 1
 	fi
-	# local caddy_download_link="https://github.com/caddyserver/caddy/releases/download/v2.6.2/caddy_2.6.2_linux_${caddy_arch}.tar.gz"
+	# local caddy_download_link="https://github.com/caddyserver/caddy/releases/download/v2.6.2/caddy_2.6.2_linux_amd64.tar.gz"
 	local caddy_download_link="https://github.com/caddyserver/caddy/releases/download/${caddy_latest_ver}/caddy_${caddy_latest_ver_num}_linux_${caddy_arch}.tar.gz"
 	mkdir -p $caddy_tmp
 
