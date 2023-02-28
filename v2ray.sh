@@ -2351,9 +2351,15 @@ update() {
 	done
 }
 
+
 update_v2ray() {
 	_load download-v2ray.sh
 	_update_v2ray_version
+}
+
+update_caddy() {
+	_load download-caddy.sh
+	_update_caddy_version
 }
 
 update_v2ray.sh() {
@@ -2605,7 +2611,7 @@ menu() {
 		echo
 		echo -e "$yellow  8. $none启动 / 停止 / 重启 / 查看日志"
 		echo
-		echo -e "$yellow  9. $none更新 V2Ray / 更新 V2Ray 管理脚本"
+		echo -e "$yellow  9. $none更新 V2Ray / 更新 V2Ray 管理脚本 / 更新 Caddy"
 		echo
 		echo -e "$yellow 10. $none卸载 V2Ray"
 		echo
@@ -2766,6 +2772,9 @@ U | update.sh)
 	update_v2ray.sh
 	exit
 	;;
+uc | update_caddy)
+  update_caddy
+  ;;
 un | uninstall)
 	uninstall_v2ray
 	;;
