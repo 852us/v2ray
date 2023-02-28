@@ -950,7 +950,7 @@ tls_config() {
 		echo
 		echo
 		echo -e "请输入一个 ${magenta}正确的域名${none}，一定一定一定要正确，不！能！出！错！"
-		read -p "(例如：233blog.com): " new_domain
+		read -p "(例如：852us.com): " new_domain
 		[ -z "$new_domain" ] && error && continue
 		echo
 		echo
@@ -2124,19 +2124,16 @@ get_v2ray_config() {
 				echo
 				echo "开始下载....请选择 V2Ray 客户端配置文件保存位置"
 				echo
-				# sz /etc/v2ray/233blog_v2ray.zip
 				local tmpfile="/tmp/233blog_v2ray_config_$RANDOM.json"
 				cp -f $v2ray_client_config $tmpfile
-				sz $tmpfile
+				#sz $tmpfile
 				echo
 				echo
 				echo -e "$green 下载完成咯...$none"
 				echo
-				# echo -e "$yellow 解压密码 = ${cyan}233blog.com$none"
-				# echo
-				echo -e "$yellow SOCKS 监听端口 = ${cyan}2333${none}"
+				echo -e "${yellow} SOCKS 监听端口 = ${cyan}2333${none}"
 				echo
-				echo -e "${yellow} HTTP 监听端口 = ${cyan}6666$none"
+				echo -e "${yellow} HTTP 监听端口 = ${cyan}6666${none}"
 				echo
 				echo "V2Ray 客户端使用教程: https://852us.com/post/4/"
 				echo
