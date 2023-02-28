@@ -1,5 +1,7 @@
 #!/bin/bash
-# Updated by Paul on 2023-02-27
+# Updated by Paul on 2023-02-28
+_version="v0.1.2"
+
 red='\e[91m'
 green='\e[92m'
 yellow='\e[93m'

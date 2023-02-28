@@ -1,5 +1,7 @@
 #!/bin/bash
-# Updated by Paul on 2023-02-27
+# Updated by Paul on 2023-02-28
+_version="v0.1.2"
+
 red='\e[91m'
 green='\e[92m'
 yellow='\e[93m'
@@ -10,7 +12,6 @@ none='\e[0m'
 # Root
 [[ $(id -u) != 0 ]] && echo -e " 哎呀……请使用 ${red}root ${none}用户运行 ${yellow}~(^_^) ${none}" && exit 1
 
-_version="v3.67"
 cmd="apt-get"
 sys_bit=$(uname -m)
 
@@ -146,10 +147,9 @@ get_transport_args() {
 	_load v2ray-info.sh
 	_v2_args
 }
+
 create_vmess_URL_config() {
-
 	[[ -z $net ]] && get_transport_args
-
 	if [[ $v2ray_transport == [45] ]]; then
 		cat >/etc/v2ray/vmess_qr.json <<-EOF
 			{
@@ -191,7 +191,6 @@ create_vmess_URL_config() {
 }
 
 view_v2ray_config_info() {
-
 	_load v2ray-info.sh
 	_v2_args
 	_v2_info
