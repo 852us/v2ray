@@ -14,6 +14,8 @@ none='\e[0m'
 
 magic="852us"
 magic_url="852us.com"
+backup="/etc/v2ray/client_backup.conf"
+
 cmd="apt-get"
 sys_bit=$(uname -m)
 
@@ -48,17 +50,11 @@ i[36]86)
 esac
 
 if [[ $(command -v yum) ]]; then
-
 	cmd="yum"
-
 fi
-
-backup="/etc/v2ray/client_backup.conf"
 
 if [[ -f /usr/bin/v2ray/v2ray && -f /etc/v2ray/config.json ]] && [[ -f $backup && -d /etc/v2ray/${magic}/v2ray ]]; then
 	. $backup
-elif [[ -f /usr/bin/v2ray/v2ray && -f /etc/v2ray/config.json ]] && [[ -f /etc/v2ray/233blog_v2ray_backup.txt && -d /etc/v2ray/${magic}/v2ray ]]; then
-	. /etc/v2ray/${magic}/v2ray/tools/v1xx_to_v3xx.sh
 else
 	echo -e " 哎呀哎呀…… ${red}出错咯...请重新安装V2Ray${none} ${yellow}~(^_^) ${none}" && exit 1
 fi
