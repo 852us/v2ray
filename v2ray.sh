@@ -2345,6 +2345,10 @@ update() {
 				exit
 				break
 				;;
+		  3)
+		    update_caddy
+		    break
+		    ;;
 			*)
 				error
 				;;
