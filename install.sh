@@ -232,8 +232,8 @@ v2ray_dynamic_port_start() {
 
 	v2ray_dynamic_port_end
 }
-v2ray_dynamic_port_end() {
 
+v2ray_dynamic_port_end() {
 	while :; do
 		echo -e "请输入 "$yellow"V2Ray 动态端口结束 "$none"范围 ["$magenta"1-65535"$none"]"
 		read -p "$(echo -e "(默认结束端口: ${cyan}20000$none):")" v2ray_dynamic_port_end_input
@@ -265,9 +265,7 @@ v2ray_dynamic_port_end() {
 			error
 			;;
 		esac
-
 	done
-
 }
 
 tls_config() {
@@ -354,6 +352,7 @@ tls_config() {
 		path_config_ask
 	fi
 }
+
 auto_tls_config() {
 	echo -e "
 
@@ -396,6 +395,7 @@ auto_tls_config() {
 		fi
 	done
 }
+
 path_config_ask() {
 	echo
 	while :; do
@@ -422,6 +422,7 @@ path_config_ask() {
 		esac
 	done
 }
+
 path_config() {
 	echo
 	while :; do
@@ -449,6 +450,7 @@ path_config() {
 	is_path=true
 	proxy_site_config
 }
+
 proxy_site_config() {
 	echo
 	while :; do
