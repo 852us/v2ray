@@ -1,6 +1,6 @@
 _get_latest_version() {
 	v2ray_repos_url="https://api.github.com/repos/v2fly/v2ray-core/releases/latest?v=$RANDOM"
-	v2ray_latest_ver="$(curl -s $v2ray_repos_url | grep 'tag_name' | cut -d\" -f4)"
+	v2ray_latest_ver="$(curl -s $v2ray_repos_url | grep 'tag_name' | cut -d\" -f4)" # awk -F \" '{print $4}'
 
 	if [[ ! $v2ray_latest_ver ]]; then
 		echo
