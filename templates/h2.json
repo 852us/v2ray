@@ -14,16 +14,16 @@
 		"network": "h2",
 		"httpSettings": {
 			"host": [
-				"233blog.com" // domain
+				"852us.com" // domain
 			],
-			"path": "/233blog" // path
+			"path": "/852us" // path
 		},
 		"security": "tls",
 		"tlsSettings": {
 			"certificates": [
 				{
-					"certificateFile": "/etc/v2ray/233boy/v2ray/config/233blog.com.cer",
-					"keyFile": "/etc/v2ray/233boy/v2ray/config/233blog.com.key"
+					"certificateFile": "/etc/v2ray/${magic}/v2ray/config/852us.com.cer",
+					"keyFile": "/etc/v2ray/${magic}/v2ray/config/852us.com.key"
 				}
 			]
 		}

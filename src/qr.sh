@@ -4,7 +4,7 @@ _qr_create() {
 	else
 		local vmess="vmess://$(cat /etc/v2ray/vmess_qr.json | base64 -w 0)"
 	fi
-	local link="https://233boy.github.io/tools/qr.html#${vmess}"
+	local link="https://${magic}.github.io/tools/qr.html#${vmess}"
 	echo
 	echo "---------- V2Ray 二维码 -------------"
 	echo
@@ -24,7 +24,7 @@ _qr_create() {
 }
 _ss_qr() {
 	local ss_link="ss://$(echo -n "${ssciphers}:${sspass}@${ip}:${ssport}" | base64 -w 0)#ss_${ip}"
-	local link="https://233boy.github.io/tools/qr.html#${ss_link}"
+	local link="https://${magic}.github.io/tools/qr.html#${ss_link}"
 	echo
 	echo "---------- Shadowsocks 二维码 -------------"
 	echo

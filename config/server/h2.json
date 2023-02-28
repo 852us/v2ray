@@ -21,9 +21,9 @@
 				"network": "h2",
 				"httpSettings": {
 					"host": [
-						"233blog.com"
+						"852us.com"
 					],
-					"path": "/233blog"
+					"path": "/852us"
 				}
 			},
 			"sniffing": {

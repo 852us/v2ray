@@ -427,9 +427,9 @@ path_config_ask() {
 path_config() {
 	echo
 	while :; do
-		echo -e "请输入想要 ${magenta} 用来分流的路径 $none , 例如 /233blog , 那么只需要输入 233blog 即可"
-		read -p "$(echo -e "(默认: [${cyan}233blog$none]):")" path
-		[[ -z $path ]] && path="233blog"
+		echo -e "请输入想要 ${magenta} 用来分流的路径 $none , 例如 /852us , 那么只需要输入 852us 即可"
+		read -p "$(echo -e "(默认: [${cyan}852us$none]):")" path
+		[[ -z $path ]] && path="852us"
 
 		case $path in
 		*[/$]*)
@@ -590,8 +590,8 @@ shadowsocks_port_config() {
 shadowsocks_password_config() {
 	while :; do
 		echo -e "请输入 "$yellow"Shadowsocks"$none" 密码"
-		read -p "$(echo -e "(默认密码: ${cyan}233blog.com$none)"): " sspass
-		[ -z "$sspass" ] && sspass="233blog.com"
+		read -p "$(echo -e "(默认密码: ${cyan}852us.com$none)"): " sspass
+		[ -z "$sspass" ] && sspass="852us.com"
 		case $sspass in
 		*[/$]*)
 			echo
@@ -810,13 +810,13 @@ backup_config() {
 		sed -i "30s/=10000/=$v2ray_dynamic_port_start_input/; 33s/=20000/=$v2ray_dynamic_port_end_input/" $backup
 	fi
 	if [[ $shadowsocks ]]; then
-		sed -i "42s/=/=true/; 45s/=6666/=$ssport/; 48s/=233blog.com/=$sspass/; 51s/=chacha20-ietf/=$ssciphers/" $backup
+		sed -i "42s/=/=true/; 45s/=6666/=$ssport/; 48s/=852us.com/=$sspass/; 51s/=chacha20-ietf/=$ssciphers/" $backup
 	fi
-	[[ $v2ray_transport == [45] || $v2ray_transport == 33 ]] && sed -i "36s/=233blog.com/=$domain/" $backup
+	[[ $v2ray_transport == [45] || $v2ray_transport == 33 ]] && sed -i "36s/=852us.com/=$domain/" $backup
 	[[ $caddy ]] && sed -i "39s/=/=true/" $backup
 	[[ $ban_ad ]] && sed -i "54s/=/=true/" $backup
 	if [[ $is_path ]]; then
-		sed -i "57s/=/=true/; 60s/=233blog/=$path/" $backup
+		sed -i "57s/=/=true/; 60s/=852us/=$path/" $backup
 		sed -i "63s#=https://liyafly.com#=$proxy_site#" $backup
 	fi
 }

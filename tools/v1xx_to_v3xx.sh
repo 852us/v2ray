@@ -100,10 +100,10 @@ socks=
 socks_port=233
 
 #---- Socks 用户名 -----
-socks_username=233blog
+socks_username=852us
 
 #---- Socks 密码 -----
-socks_userpass=233blog.com
+socks_userpass=852us.com
 
 #---- MTProto -----
 mtproto=
@@ -118,7 +118,7 @@ mtproto_secret=lalala
 ban_bt=true
 		EOF
 if [[ -f /usr/local/bin/v2ray ]]; then
-	cp -f /etc/v2ray/233boy/v2ray/v2ray.sh /usr/local/sbin/v2ray
+	cp -f /etc/v2ray/${magic}/v2ray/v2ray.sh /usr/local/sbin/v2ray
 	chmod +x /usr/local/sbin/v2ray
 	rm -rf $backup
 	rm -rf /usr/local/bin/v2ray

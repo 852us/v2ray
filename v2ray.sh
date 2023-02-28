@@ -403,8 +403,8 @@ shadowsocks_port_config() {
 shadowsocks_password_config() {
 	while :; do
 		echo -e "请输入 "$yellow"Shadowsocks"$none" 密码"
-		read -p "$(echo -e "(默认密码: ${cyan}233blog.com$none)"): " new_sspass
-		[ -z "$new_sspass" ] && new_sspass="233blog.com"
+		read -p "$(echo -e "(默认密码: ${cyan}852us.com$none)"): " new_sspass
+		[ -z "$new_sspass" ] && new_sspass="852us.com"
 		case $new_sspass in
 		*[/$]*)
 			echo
@@ -1139,9 +1139,9 @@ path_config_ask() {
 path_config() {
 	echo
 	while :; do
-		echo -e "请输入想要 ${magenta}用来分流的路径 $none , 例如 /233blog , 那么只需要输入 233blog 即可"
-		read -p "$(echo -e "(默认: [${cyan}233blog$none]):")" new_path
-		[[ -z $new_path ]] && new_path="233blog"
+		echo -e "请输入想要 ${magenta}用来分流的路径 $none , 例如 /852us , 那么只需要输入 852us 即可"
+		read -p "$(echo -e "(默认: [${cyan}852us$none]):")" new_path
+		[[ -z $new_path ]] && new_path="852us"
 
 		case $new_path in
 		*[/$]*)
@@ -1587,7 +1587,7 @@ change_path_config() {
 	if [[ $v2ray_transport == [45] || $v2ray_transport == 33 ]] && [[ $caddy && $is_path ]]; then
 		echo
 		while :; do
-			echo -e "请输入想要 ${magenta}用来分流的路径$none , 例如 /233blog , 那么只需要输入 233blog 即可"
+			echo -e "请输入想要 ${magenta}用来分流的路径$none , 例如 /852us , 那么只需要输入 852us 即可"
 			read -p "$(echo -e "(当前分流的路径: [${cyan}/${path}$none]):")" new_path
 			[[ -z $new_path ]] && error && continue
 
@@ -2240,9 +2240,9 @@ get_v2ray_config_info_link() {
 	echo
 	echo -e "$green 正在生成链接.... 稍等片刻即可....$none"
 	echo
-	create_v2ray_config_text >/tmp/233blog_v2ray.txt
+	create_v2ray_config_text >/tmp/852us_v2ray.txt
 	local random=$(echo $RANDOM-$RANDOM-$RANDOM | base64 -w 0)
-	#local link=$(curl -s --upload-file /tmp/233blog_v2ray.txt "https://transfer.sh/${random}_233v2_v2ray.txt")
+	#local link=$(curl -s --upload-file /tmp/852us_v2ray.txt "https://transfer.sh/${random}_233v2_v2ray.txt")
 	if [[ $link ]]; then
 		echo
 		echo "---------- V2Ray 配置信息链接-------------"
@@ -2260,7 +2260,7 @@ get_v2ray_config_info_link() {
 		echo -e "$red 哎呀呀呀...出错咯...请重试$none"
 		echo
 	fi
-	rm -rf /tmp/233blog_v2ray.txt
+	rm -rf /tmp/852us_v2ray.txt
 }
 
 get_v2ray_config_qr_link() {

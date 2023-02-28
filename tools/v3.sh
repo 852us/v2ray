@@ -93,10 +93,10 @@ socks=
 socks_port=233
 
 #---- Socks 用户名 -----
-socks_username=233blog
+socks_username=852us
 
 #---- Socks 密码 -----
-socks_userpass=233blog.com
+socks_userpass=852us.com
 
 #---- MTProto -----
 mtproto=
