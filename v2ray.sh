@@ -1,6 +1,6 @@
 #!/bin/bash
 # Updated by Paul on 2023-02-28
-_version="v0.3.1"
+_version="v0.3.2"
 
 red='\e[91m'
 green='\e[92m'
@@ -1200,6 +1200,7 @@ install_caddy() {
 	_download_caddy_file
 	_install_caddy_service
 }
+
 caddy_config() {
 	# local email=$(shuf -i1-10000000000 -n1)
 	_load caddy-config.sh
@@ -1964,11 +1965,11 @@ custom_uuid() {
 v2ray_service() {
 	while :; do
 		echo
-		echo -e "$yellow 1. $none启动 V2Ray"
+		echo -e "$yellow 1. $none启动 V2Ray 与 caddy"
 		echo
-		echo -e "$yellow 2. $none停止 V2Ray"
+		echo -e "$yellow 2. $none停止 V2Ray 与 caddy"
 		echo
-		echo -e "$yellow 3. $none重启 V2Ray"
+		echo -e "$yellow 3. $none重启 V2Ray 与 caddy"
 		echo
 		echo -e "$yellow 4. $none查看访问日志"
 		echo
@@ -2014,8 +2015,8 @@ start_v2ray() {
 		echo
 	else
 
-		# systemctl start v2ray
-		service v2ray start >/dev/null 2>&1
+		systemctl start v2ray caddy >/dev/null 2>&1
+		# service v2ray start >/dev/null 2>&1
 		if [[ $? -ne 0 ]]; then
 			echo
 			echo -e "${red} V2Ray 启动失败！$none"
@@ -2030,28 +2031,28 @@ start_v2ray() {
 
 stop_v2ray() {
 	if [[ $v2ray_pid ]]; then
-		# systemctl stop v2ray
-		service v2ray stop >/dev/null 2>&1
+		systemctl stop v2ray caddy >/dev/null 2>&1
+		# service v2ray stop >/dev/null 2>&1
 		echo
-		echo -e "${green} V2Ray 已停止$none"
+		echo -e "${green} V2Ray 与 caddy 已停止$none"
 		echo
 	else
 		echo
-		echo -e "${red} V2Ray 没有在运行$none"
+		echo -e "${red} V2Ray 或 caddy 没有在运行$none"
 		echo
 	fi
 }
 
 restart_v2ray() {
-	# systemctl restart v2ray
-	service v2ray restart >/dev/null 2>&1
+	systemctl restart v2ray caddy
+	# service v2ray restart >/dev/null 2>&1
 	if [[ $? -ne 0 ]]; then
 		echo
-		echo -e "${red} V2Ray 重启失败！$none"
+		echo -e "${red} V2Ray 或 caddy 重启失败！$none"
 		echo
 	else
 		echo
-		echo -e "${green} V2Ray 重启完成 $none"
+		echo -e "${green} V2Ray 与 caddy 重启完成 $none"
 		echo
 	fi
 }
@@ -2571,11 +2572,11 @@ _help() {
 
 	${green}v2ray status $none查看 V2Ray 运行状态
 
-	${green}v2ray start $none启动 V2Ray
+	${green}v2ray start $none启动 V2Ray  与 caddy
 
-	${green}v2ray stop $none停止 V2Ray
+	${green}v2ray stop $none停止 V2Ray  与 caddy
 
-	${green}v2ray restart $none重启 V2Ray
+	${green}v2ray restart $none重启 V2Ray 与 caddy
 
 	${green}v2ray log $none查看 V2Ray 运行日志
 
