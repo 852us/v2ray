@@ -2813,7 +2813,7 @@ reuuid)
 	;;
 v | version)
 	echo
-	echo -e " 当前 V2Ray 版本: ${green}$v2ray_ver$none  /  当前 V2Ray 管理脚本版本: ${cyan}$_version$none"
+	echo -e "V2Ray 版本: ${green}$v2ray_ver$none  /  V2Ray 管理脚本版本: ${cyan}$_version$none  / Caddy 版本： ${blue}$caddy_ver$none"
 	echo
 	;;
 bbr)
