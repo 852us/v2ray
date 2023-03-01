@@ -2015,7 +2015,7 @@ start_v2ray() {
 		echo
 	else
 
-		systemctl start v2ray caddy >/dev/null 2>&1
+		systemctl start caddy v2ray >/dev/null 2>&1
 		# service v2ray start >/dev/null 2>&1
 		if [[ $? -ne 0 ]]; then
 			echo
@@ -2032,7 +2032,7 @@ start_v2ray() {
 
 stop_v2ray() {
 	if [[ $v2ray_pid ]]; then
-		systemctl stop v2ray caddy >/dev/null 2>&1
+		systemctl stop caddy v2ray >/dev/null 2>&1
 		# service v2ray stop >/dev/null 2>&1
 		echo
 		echo -e "${green} V2Ray 与 caddy 已停止$none"
@@ -2046,7 +2046,7 @@ stop_v2ray() {
 }
 
 restart_v2ray() {
-	systemctl restart v2ray caddy
+	systemctl restart caddy v2ray
 	sleep 2s
 	# service v2ray restart >/dev/null 2>&1
 	if [[ $? -ne 0 ]]; then
@@ -2061,7 +2061,6 @@ restart_v2ray() {
 }
 
 status_v2ray(){
-  sleep 2s
   v2ray_pid=$(pgrep -f /usr/bin/v2ray/v2ray)
   caddy_pid=$(pgrep -f /usr/local/bin/caddy)
 
