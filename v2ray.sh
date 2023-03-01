@@ -2336,7 +2336,7 @@ install_bbr() {
 	fi
 }
 
-update() {
+update_menu() {
 	while :; do
 		echo
 		echo -e "$yellow 1. $none更新 V2Ray 主程序"
@@ -2344,6 +2344,8 @@ update() {
 		echo -e "$yellow 2. $none更新 V2Ray 管理脚本"
 		echo
 		echo -e "$yellow 3. $none更新 Caddy 程序"
+		echo
+		echo -e "$yellow 4. $none更新 全部，包括：V2ray主程序, V2ray管理脚本、Caddy程序"
 		echo
 		read -p "$(echo -e "请选择 [${magenta}1-3$none]:")" _opt
 		if [[ -z $_opt ]]; then
@@ -2360,6 +2362,12 @@ update() {
 				break
 				;;
 		  3)
+		    update_caddy
+		    break
+		    ;;
+		  4)
+		    update_v2ray
+		    update_v2ray.sh
 		    update_caddy
 		    break
 		    ;;
@@ -2681,7 +2689,7 @@ menu() {
 				break
 				;;
 			9)
-				update
+				update_menu
 				break
 				;;
 			10)
