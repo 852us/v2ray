@@ -69,7 +69,7 @@ _update_v2ray_version() {
 	_get_latest_version
 	if [[ $v2ray_ver != $v2ray_latest_ver ]]; then
 		echo
-		echo -e " $green 咦...发现新版本耶....正在拼命更新.......$none"
+		echo -e " $green 咦...发现V2ray主程序的新版本耶....正在拼命更新.......$none"
 		echo
 		_download_v2ray_file
 		do_service restart v2ray
@@ -80,7 +80,7 @@ _update_v2ray_version() {
 		echo
 	else
 		echo
-		echo -e " $green 木有发现新版本....$none"
+		echo -e " $green 木有发现V2ray主程序的新版本....$none"
 		echo
 	fi
 }

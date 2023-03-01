@@ -2410,11 +2410,11 @@ update_v2ray.sh() {
 
 	if [[ $latest_version == $_version ]]; then
 		echo
-		echo -e " $green 木有发现新版本.... $none"
+		echo -e " $green 木有发现V2ray管理脚本的新版本.... $none"
 		echo
 	else
 		echo
-		echo -e " $green 咦...发现新版本耶....正在拼命更新.......$none"
+		echo -e " $green 咦...发现V2ray管理脚本的新版本耶....正在拼命更新.......$none"
 		echo
 		cd /etc/v2ray/${magic}/v2ray
 		git pull
@@ -2707,6 +2707,7 @@ menu() {
 		fi
 	done
 }
+
 args=$1
 [ -z $1 ] && args="menu"
 case $args in

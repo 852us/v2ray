@@ -86,7 +86,7 @@ _update_caddy_version() {
 	_get_latest_version
 	if [[ $caddy_ver != $caddy_latest_ver ]]; then
 		echo
-		echo -e " $green 咦...发现新版本耶....正在拼命更新.......$none"
+		echo -e " $green 咦...发现Caddy程序的新版本耶....正在拼命更新.......$none"
 		echo
 		_download_caddy_file
 		do_service restart caddy
@@ -95,7 +95,7 @@ _update_caddy_version() {
 		echo
 	else
 		echo
-		echo -e " $green 木有发现新版本....$none"
+		echo -e " $green 木有发现Caddy程序的新版本....$none"
 		echo
 	fi
 }
