@@ -2421,7 +2421,7 @@ update_v2ray.sh() {
 		cp -f /etc/v2ray/${magic}/v2ray/v2ray.sh $_v2ray_sh
 		chmod +x $_v2ray_sh
 		echo
-		echo -e "$green 更新成功啦...当前 V2Ray 管理脚本 版本: ${cyan}$latest_version$none"
+		echo -e " $green 更新成功啦...当前 V2Ray 管理脚本 版本: ${cyan}$latest_version$none"
 		echo
 	fi
 }
