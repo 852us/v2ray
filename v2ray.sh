@@ -2410,7 +2410,7 @@ update_v2ray.sh() {
 
 	if [[ $latest_version == $_version ]]; then
 		echo
-		echo -e "$green 木有发现新版本 $none"
+		echo -e " $green 木有发现新版本.... $none"
 		echo
 	else
 		echo
