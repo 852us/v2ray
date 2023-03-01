@@ -2061,7 +2061,7 @@ restart_v2ray() {
 }
 
 status_v2ray(){
-  sleep2s
+  sleep 2s
   v2ray_pid=$(pgrep -f /usr/bin/v2ray/v2ray)
   caddy_pid=$(pgrep -f /usr/local/bin/caddy)
 
