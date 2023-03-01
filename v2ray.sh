@@ -1,6 +1,6 @@
 #!/bin/bash
 # Updated by Paul on 2023-02-28
-_version="v0.3.2"
+_version="v0.3.3"
 
 red='\e[91m'
 green='\e[92m'
@@ -2814,7 +2814,7 @@ reuuid)
 	;;
 v | version)
 	echo
-	echo -e "V2Ray 版本: ${green}$v2ray_ver$none  /  V2Ray 管理脚本版本: ${cyan}$_version$none  / Caddy 版本： ${blue}$caddy_ver$none"
+	echo -e "V2Ray 版本: ${green}$v2ray_ver$none  /  V2Ray 管理脚本版本: ${cyan}$_version$none  / Caddy 版本：${blue}$caddy_ver$none"
 	echo
 	;;
 bbr)
