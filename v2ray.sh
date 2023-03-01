@@ -2025,6 +2025,7 @@ start_v2ray() {
 			echo
 			echo -e "${green} V2Ray 与 caddy 已启动$none"
 			echo
+		  sleep 2s
 		fi
 	fi
 }
@@ -2036,6 +2037,7 @@ stop_v2ray() {
 		echo
 		echo -e "${green} V2Ray 与 caddy 已停止$none"
 		echo
+		sleep 2s
 	else
 		echo
 		echo -e "${red} V2Ray 或 caddy 没有在运行$none"
@@ -2045,6 +2047,7 @@ stop_v2ray() {
 
 restart_v2ray() {
 	systemctl restart v2ray caddy
+	sleep 2s
 	# service v2ray restart >/dev/null 2>&1
 	if [[ $? -ne 0 ]]; then
 		echo
