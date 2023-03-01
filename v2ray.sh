@@ -2796,6 +2796,11 @@ U | update.sh)
 uc | update_caddy)
   update_caddy
   ;;
+ua | update_all)
+  update_v2ray
+  update_v2ray.sh
+  update_caddy
+  ;;
 un | uninstall)
 	uninstall_v2ray
 	;;
