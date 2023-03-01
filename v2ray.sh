@@ -2023,7 +2023,7 @@ start_v2ray() {
 			echo
 		else
 			echo
-			echo -e "${green} V2Ray 已启动$none"
+			echo -e "${green} V2Ray 与 caddy 已启动$none"
 			echo
 		fi
 	fi
@@ -2054,6 +2054,15 @@ restart_v2ray() {
 		echo
 		echo -e "${green} V2Ray 与 caddy 重启完成 $none"
 		echo
+	fi
+}
+
+status_v2ray(){
+	echo
+	if [[ $v2ray_transport == [45] || $v2ray_transport == 33 ]] && [[ $caddy ]]; then
+		echo -e " V2Ray 状态: $v2ray_status  /  Caddy 状态: $caddy_run_status"
+	else
+		echo -e " V2Ray 状态: $v2ray_status"
 	fi
 }
 
@@ -2739,25 +2748,22 @@ bt)
 	_ban_bt_main
 	;;
 status)
-	echo
-	if [[ $v2ray_transport == [45] || $v2ray_transport == 33 ]] && [[ $caddy ]]; then
-		echo -e " V2Ray 状态: $v2ray_status  /  Caddy 状态: $caddy_run_status"
-	else
-		echo -e " V2Ray 状态: $v2ray_status"
-	fi
-	echo
+  status_v2ray
 	;;
 start)
 	start_v2ray
+	status_v2ray
 	;;
 stop)
 	stop_v2ray
+	status_v2ray
 	;;
 restart)
 	if [[ $v2ray_transport == [45] || $v2ray_transport == 33 ]] && [[ $caddy ]]; then
 		do_service restart caddy
 	fi
 	restart_v2ray
+	status_v2ray
 	;;
 reload)
 	config
