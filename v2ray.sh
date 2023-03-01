@@ -2368,7 +2368,7 @@ update_menu() {
         update_caddy
         update_v2ray
         update_v2ray.sh
-        break
+        exit
         ;;
       *)
         error
@@ -2583,11 +2583,12 @@ _help() {
 	${green}v2ray stop $none停止 V2Ray  与 caddy
 	${green}v2ray restart $none重启 V2Ray 与 caddy
 	${green}v2ray log $none查看 V2Ray 运行日志
-	${green}v2ray u $none更新 V2Ray
-	${green}v2ray U $none更新 V2Ray 管理脚本
-	${green}v2ray uc $none更新 Caddy 程序
-	${green}v2ray ua $none更新 Caddy 程序
-	${green}v2ray uninstall $none卸载 V2Ray
+	${green}v2ray u (或update) $none更新 V2Ray
+	${green}v2ray U (或update.sh) $none更新 V2Ray 管理脚本
+	${green}v2ray uc (或update_caddy) $none更新 Caddy 程序
+	${green}v2ray ua (或update_all)$none更新 Caddy 程序
+	${green}v2ray un (或uninstall) $none卸载 V2Ray
+	${green}v2ray re (或reinstall) $none重新安装 V2Ray
 "
 }
 
@@ -2787,7 +2788,7 @@ ua | update_all)
 un | uninstall)
   uninstall_v2ray
   ;;
-reinstall)
+re | reinstall)
   uninstall_v2ray
   if [[ $is_uninstall_v2ray ]]; then
     cd
