@@ -2061,6 +2061,7 @@ restart_v2ray() {
 }
 
 status_v2ray(){
+  sleep2s
   v2ray_pid=$(pgrep -f /usr/bin/v2ray/v2ray)
   caddy_pid=$(pgrep -f /usr/local/bin/caddy)
 
@@ -2069,7 +2070,6 @@ status_v2ray(){
   else
     v2ray_status="$red未在运行$none"
   fi
-
   if [ $caddy_pid ]; then
     caddy_status="$green正在运行$none"
   else
@@ -2077,11 +2077,7 @@ status_v2ray(){
   fi
 
 	echo
-	if [[ $v2ray_transport == [45] || $v2ray_transport == 33 ]] && [[ $caddy ]]; then
-		echo -e " V2Ray 状态: $v2ray_status  /  Caddy 状态: $caddy_run_status"
-	else
-		echo -e " V2Ray 状态: $v2ray_status"
-	fi
+	echo -e " V2Ray 状态: $v2ray_status  /  Caddy 状态: $caddy_run_status"
 }
 
 view_v2ray_log() {
