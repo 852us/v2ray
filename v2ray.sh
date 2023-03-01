@@ -5,6 +5,7 @@ _version="v0.3.2"
 red='\e[91m'
 green='\e[92m'
 yellow='\e[93m'
+blue='\e[94m'
 magenta='\e[95m'
 cyan='\e[96m'
 none='\e[0m'
