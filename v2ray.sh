@@ -2009,6 +2009,7 @@ v2ray_service() {
 }
 
 start_v2ray() {
+  status_v2ray
 	if [[ $v2ray_pid ]]; then
 		echo
 		echo -e "${green} V2Ray 正在运行...无需再启动$none"
@@ -2027,9 +2028,11 @@ start_v2ray() {
 			echo
 		fi
 	fi
+	status_v2ray
 }
 
 stop_v2ray() {
+  status_v2ray
 	if [[ $v2ray_pid ]]; then
 		systemctl stop caddy v2ray >/dev/null 2>&1
 		# service v2ray stop >/dev/null 2>&1
@@ -2041,9 +2044,11 @@ stop_v2ray() {
 		echo -e "${red} V2Ray 或 caddy 没有在运行$none"
 		echo
 	fi
+	status_v2ray
 }
 
 restart_v2ray() {
+  status_v2ray
 	systemctl restart caddy v2ray
 	# service v2ray restart >/dev/null 2>&1
 	if [[ $? -ne 0 ]]; then
@@ -2055,6 +2060,7 @@ restart_v2ray() {
 		echo -e "${green} V2Ray 与 caddy 重启完成 $none"
 		echo
 	fi
+	status_v2ray
 }
 
 status_v2ray(){
@@ -2762,18 +2768,12 @@ status)
 	;;
 start)
 	start_v2ray
-	status_v2ray
 	;;
 stop)
 	stop_v2ray
-	status_v2ray
 	;;
 restart)
-	if [[ $v2ray_transport == [45] || $v2ray_transport == 33 ]] && [[ $caddy ]]; then
-		do_service restart caddy
-	fi
 	restart_v2ray
-	status_v2ray
 	;;
 reload)
 	config
