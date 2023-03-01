@@ -2408,7 +2408,7 @@ update_v2ray.sh() {
 		exit 1
 	fi
 
-	if [[ $latest_version == $_version ]]; then
+	if [[ "$latest_version" == "$_version" ]]; then
 		echo
 		echo -e " $green 木有发现V2ray管理脚本的新版本.... $none"
 		echo
