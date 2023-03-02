@@ -406,8 +406,8 @@ shadowsocks_port_config() {
 shadowsocks_password_config() {
   while :; do
     echo -e "请输入 "$yellow"Shadowsocks"$none" 密码"
-    read -p "$(echo -e "(默认密码: ${cyan}852us.com$none)"): " new_sspass
-    [ -z "$new_sspass" ] && new_sspass="852us.com"
+    read -p "$(echo -e "(默认密码: ${cyan}${magic_path}$none)"): " new_sspass
+    [ -z "$new_sspass" ] && new_sspass="${magic_path}"
     case $new_sspass in
     *[/$]*)
       echo
@@ -951,7 +951,7 @@ tls_config() {
     echo
     echo
     echo -e "请输入一个 ${magenta}正确的域名${none}，一定一定一定要正确，不！能！出！错！"
-    read -p "(例如：852us.com): " new_domain
+    read -p "(例如：${magic_url}): " new_domain
     [ -z "$new_domain" ] && error && continue
     echo
     echo
@@ -1116,8 +1116,8 @@ path_config_ask() {
   echo
   while :; do
     echo -e "是否开启 网站伪装 和 路径分流 [${magenta}Y/N$none]"
-    read -p "$(echo -e "(默认: [${cyan}N$none]):")" path_ask
-    [[ -z $path_ask ]] && path_ask="n"
+    read -p "$(echo -e "(默认: [${cyan}Y$none]):")" path_ask
+    [[ -z $path_ask ]] && path_ask="Y"
 
     case $path_ask in
     Y | y)
@@ -1125,7 +1125,6 @@ path_config_ask() {
       break
       ;;
     N | n)
-      echo
       echo
       echo -e "$yellow 网站伪装 和 路径分流 = $cyan 不想配置 $none"
       echo "----------------------------------------------------------------"
@@ -1142,9 +1141,9 @@ path_config_ask() {
 path_config() {
   echo
   while :; do
-    echo -e "请输入想要 ${magenta}用来分流的路径 $none , 例如 /852us , 那么只需要输入 852us 即可"
-    read -p "$(echo -e "(默认: [${cyan}852us$none]):")" new_path
-    [[ -z $new_path ]] && new_path="852us"
+    echo -e "请输入想要 ${magenta}用来分流的路径 $none , 例如 /${magic_path} , 那么只需要输入 ${magic_path} 即可"
+    read -p "$(echo -e "(默认: [${cyan}${magic_path}$none]):")" new_path
+    [[ -z $new_path ]] && new_path="${magic_path}"
 
     case $new_path in
     *[/$]*)
@@ -1591,7 +1590,7 @@ change_path_config() {
   if [[ $v2ray_transport == [45] || $v2ray_transport == 33 ]] && [[ $caddy && $is_path ]]; then
     echo
     while :; do
-      echo -e "请输入想要 ${magenta}用来分流的路径$none , 例如 /852us , 那么只需要输入 852us 即可"
+      echo -e "请输入想要 ${magenta}用来分流的路径$none , 例如 /${magic_path} , 那么只需要输入 ${magic_path} 即可"
       read -p "$(echo -e "(当前分流的路径: [${cyan}/${path}$none]):")" new_path
       [[ -z $new_path ]] && error && continue
 
@@ -1826,7 +1825,7 @@ blocked_hosts() {
     echo
     echo "备注: 广告拦截是基于 域名 拦截的..所以也许会造成浏览网页的时候出现部分元素留白..或者其他问题"
     echo
-    echo "反馈问题或请求拦截更多域名: https://github.com/852us/v2ray/issues"
+    echo "反馈问题或请求拦截更多域名: https://github.com/${magic}/v2ray/issues"
     echo
     echo -e "当前广告拦截状态: $_info"
     echo
@@ -2142,7 +2141,7 @@ get_v2ray_config() {
         echo
         echo -e "${yellow} HTTP 监听端口 = ${cyan}6666${none}"
         echo
-        echo "V2Ray 客户端使用教程: https://852us.com/post/4/"
+        echo "V2Ray 客户端使用教程: https://${magic_url}/post/4/"
         echo
         break
       else
@@ -2165,7 +2164,7 @@ create_v2ray_config_text() {
   if [[ $v2ray_transport == [45] ]]; then
     if [[ ! $caddy ]]; then
       echo
-      echo " 警告！请自行配置 TLS...教程: https://852us.com/post/3/"
+      echo " 警告！请自行配置 TLS...教程: https://${magic_url}/post/3/"
     fi
     echo
     echo "地址 (Address) = ${domain}"
@@ -2246,7 +2245,7 @@ create_v2ray_config_text() {
   fi
   echo "---------- END -------------"
   echo
-  echo "V2Ray 客户端使用教程: https://852us.com/post/4/"
+  echo "V2Ray 客户端使用教程: https://${magic_url}/post/4/"
   echo
 }
 
@@ -2254,16 +2253,15 @@ get_v2ray_config_info_link() {
   echo
   echo -e "$green 正在生成链接.... 稍等片刻即可....$none"
   echo
-  create_v2ray_config_text >/tmp/852us_v2ray.txt
+  create_v2ray_config_text >/tmp/${magic}_v2ray.txt
   local random=$(echo $RANDOM-$RANDOM-$RANDOM | base64 -w 0)
-  #local link=$(curl -s --upload-file /tmp/852us_v2ray.txt "https://transfer.sh/${random}_233v2_v2ray.txt")
   if [[ $link ]]; then
     echo
     echo "---------- V2Ray 配置信息链接-------------"
     echo
     echo -e "$yellow 链接 = $cyan$link$none"
     echo
-    echo -e " V2Ray 客户端使用教程: https://852us.com/post/4/"
+    echo -e " V2Ray 客户端使用教程: https://${magic_url}/post/4/"
     echo
     echo "备注...链接将在 14 天后失效..."
     echo
@@ -2274,7 +2272,6 @@ get_v2ray_config_info_link() {
     echo -e "$red 哎呀呀呀...出错咯...请重试$none"
     echo
   fi
-  rm -rf /tmp/852us_v2ray.txt
 }
 
 get_v2ray_config_qr_link() {
@@ -2390,9 +2387,9 @@ update_caddy() {
 
 update_v2ray.sh() {
   if [[ $_test ]]; then
-    local latest_version=$(curl -H 'Cache-Control: no-cache' -s -L "https://raw.githubusercontent.com/852us/v2ray/test/v2ray.sh" | grep '_version' -m1 | cut -d\" -f2)
+    local latest_version=$(curl -H 'Cache-Control: no-cache' -s -L "https://raw.githubusercontent.com/${magic}/v2ray/test/v2ray.sh" | grep '_version' -m1 | cut -d\" -f2)
   else
-    local latest_version=$(curl -H 'Cache-Control: no-cache' -s -L "https://raw.githubusercontent.com/852us/v2ray/master/v2ray.sh" | grep '_version' -m1 | cut -d\" -f2)
+    local latest_version=$(curl -H 'Cache-Control: no-cache' -s -L "https://raw.githubusercontent.com/${magic}/v2ray/master/v2ray.sh" | grep '_version' -m1 | cut -d\" -f2)
   fi
 
   if [[ ! $latest_version ]]; then
@@ -2600,13 +2597,13 @@ menu() {
     echo
     echo -e "## V2Ray 版本: $cyan$v2ray_ver$none  /  V2Ray 状态: $v2ray_status ##"
     echo
-    echo "帮助说明: https://852us.com/post/1/"
+    echo "帮助说明: https://${magic_url}/post/1/"
     echo
-    echo "反馈问题: https://github.com/852us/v2ray/issues"
+    echo "反馈问题: https://github.com/${magic}/v2ray/issues"
     echo
     echo "TG 频道: https://t.me/tg2333"
     echo
-    echo "捐赠脚本作者: https://852us.com/donate/"
+    echo "捐赠脚本作者: https://${magic_url}/donate/"
     echo
     echo -e "$yellow  1. $none查看 V2Ray 配置"
     echo
