@@ -326,22 +326,20 @@ tls_config() {
 	echo
 
 	while :; do
-		read -p "$(echo -e "(是否已经正确解析: [${magenta}Y$none]):") " record
-		if [[ -z "$record" ]]; then
-			error
-		else
-			if [[ "$record" == [Yy] ]]; then
-				domain_check
-				echo
-				echo
-				echo -e "$yellow 域名解析 = ${cyan}我确定已经有解析了$none"
-				echo "----------------------------------------------------------------"
-				echo
-				break
-			else
-				error
-			fi
-		fi
+	  echo -e "(是否已经正确解析: [${magenta}Y/N$none]):"
+		read -p "$(echo -e "(默认: [${cyan}Y$none]):") " record
+
+		if [[ -z "$record" ]]; then record="Y" ; fi
+    if [[ "$record" == [Yy] ]]; then
+      domain_check
+      echo
+      echo -e "$yellow 域名解析 = ${cyan}我确定已经有解析了$none"
+      echo "----------------------------------------------------------------"
+      echo
+      break
+    else
+      error
+    fi
 	done
 
 	if [[ $v2ray_transport -eq 4 ]]; then
@@ -371,31 +369,27 @@ auto_tls_config() {
 	echo
 
 	while :; do
-		read -p "$(echo -e "(是否自动配置 TLS: [${magenta}Y/N$none]):") " auto_install_caddy
-		if [[ -z "$auto_install_caddy" ]]; then
-			error
-		else
-			if [[ "$auto_install_caddy" == [Yy] ]]; then
-				caddy=true
-				install_caddy_info="打开"
-				echo
-				echo
-				echo -e "$yellow 自动配置 TLS = $cyan$install_caddy_info$none"
-				echo "----------------------------------------------------------------"
-				echo
-				break
-			elif [[ "$auto_install_caddy" == [Nn] ]]; then
-				install_caddy_info="关闭"
-				echo
-				echo
-				echo -e "$yellow 自动配置 TLS = $cyan$install_caddy_info$none"
-				echo "----------------------------------------------------------------"
-				echo
-				break
-			else
-				error
-			fi
-		fi
+	  echo -e "(是否自动配置 TLS: [${magenta}Y/N$none]):"
+		read -p "$(echo -e "(默认: [${cyan}Y$none]):") " auto_install_caddy
+		[[ -z "$auto_install_caddy" ]] && auto_install_caddy="Y"
+    if [[ "$auto_install_caddy" == [Yy] ]]; then
+      caddy=true
+      install_caddy_info="打开"
+      echo
+      echo -e "$yellow 自动配置 TLS = $cyan$install_caddy_info$none"
+      echo "----------------------------------------------------------------"
+      echo
+      break
+    elif [[ "$auto_install_caddy" == [Nn] ]]; then
+      install_caddy_info="关闭"
+      echo
+      echo -e "$yellow 自动配置 TLS = $cyan$install_caddy_info$none"
+      echo "----------------------------------------------------------------"
+      echo
+      break
+    else
+      error
+    fi
 	done
 }
 
@@ -405,7 +399,6 @@ path_config_ask() {
 		echo -e "是否开启 网站伪装 和 路径分流 [${magenta}Y/N$none]"
 		read -p "$(echo -e "(默认: [${cyan}Y$none]):")" path_ask
 		[[ -z $path_ask ]] && path_ask="Y"
-
 		case $path_ask in
 		Y | y)
 			path_config
