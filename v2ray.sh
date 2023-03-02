@@ -15,6 +15,8 @@ none='\e[0m'
 
 magic="852us"
 magic_url="852us.com"
+magic_path="api"
+magic_mask="https://www.gnu.org/"
 backup="/etc/v2ray/client_backup.conf"
 
 cmd="apt-get"
@@ -50,9 +52,7 @@ i[36]86)
   ;;
 esac
 
-if [[ $(command -v yum) ]]; then
-  cmd="yum"
-fi
+if [[ $(command -v yum) ]]; then cmd="yum"; fi
 
 if [[ -f /usr/bin/v2ray/v2ray && -f /etc/v2ray/config.json ]] && [[ -f $backup && -d /etc/v2ray/${magic}/v2ray ]]; then
   . $backup
