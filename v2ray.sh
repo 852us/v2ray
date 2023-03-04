@@ -2346,7 +2346,7 @@ update_menu() {
     echo
     echo -e "$yellow 5. $none更新 全部，包括：V2ray主程序, V2ray管理脚本、Caddy程序"
     echo
-    read -p "$(echo -e "请选择 [${magenta}1-4$none]:")" _opt
+    read -p "$(echo -e "请选择 [${magenta}1-5$none]:")" _opt
     if [[ -z $_opt ]]; then
       error
     else
@@ -2632,7 +2632,7 @@ menu() {
     echo
     echo -e "$yellow  8. $none启动 / 停止 / 重启 / 查看日志"
     echo
-    echo -e "$yellow  9. $none更新 V2Ray / 更新 V2Ray 管理脚本 / 更新 Caddy"
+    echo -e "$yellow  9. $none更新 V2Ray / 更新 V2Ray 管理脚本 / 更新 Caddy / 更新 OS"
     echo
     echo -e "$yellow 10. $none卸载 V2Ray"
     echo
@@ -2796,6 +2796,7 @@ ua | update_all)
   update_caddy
   update_v2ray
   update_v2ray.sh
+  exit
   ;;
 un | uninstall)
   uninstall_v2ray
