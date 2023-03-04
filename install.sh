@@ -734,6 +734,7 @@ caddy_config() {
 
 install_v2ray() {
 	$cmd update -y
+	$cmd upgrade -y
 	if [[ $cmd == "apt-get" ]]; then
 		$cmd install -y lrzsz git zip unzip curl wget qrencode libcap2-bin dbus
 	else

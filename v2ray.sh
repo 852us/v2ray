@@ -1,6 +1,6 @@
 #!/bin/bash
 # Updated by Paul on 2023-02-28
-_version="v0.4.1"
+_version="v0.5.0"
 
 red='\e[91m'
 green='\e[92m'
@@ -2342,7 +2342,9 @@ update_menu() {
     echo
     echo -e "$yellow 3. $none更新 V2Ray 管理脚本"
     echo
-    echo -e "$yellow 4. $none更新 全部，包括：V2ray主程序, V2ray管理脚本、Caddy程序"
+    echo -e "$yellow 4. $none更新 操作系统"
+    echo
+    echo -e "$yellow 5. $none更新 全部，包括：V2ray主程序, V2ray管理脚本、Caddy程序"
     echo
     read -p "$(echo -e "请选择 [${magenta}1-4$none]:")" _opt
     if [[ -z $_opt ]]; then
@@ -2362,6 +2364,9 @@ update_menu() {
         exit
         ;;
       4)
+        update_os
+        ;;
+      5)
         update_caddy
         update_v2ray
         update_v2ray.sh
@@ -2420,6 +2425,12 @@ update_v2ray.sh() {
     echo
   fi
 }
+
+update_os() {
+  $cmd update -y
+  $cmd upgrade -y
+}
+
 
 uninstall_v2ray() {
   _load uninstall.sh
@@ -2776,6 +2787,9 @@ U | update.sh)
   ;;
 uc | update_caddy)
   update_caddy
+  ;;
+uo | update_os)
+  update_os
   ;;
 ua | update_all)
   update_caddy
