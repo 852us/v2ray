@@ -1,6 +1,6 @@
 #!/bin/bash
 # Updated by Paul on 2023-02-28
-_version="v0.5.0"
+_version="v0.5.1"
 
 red='\e[91m'
 green='\e[92m'
@@ -2792,6 +2792,7 @@ uo | update_os)
   update_os
   ;;
 ua | update_all)
+  update_os
   update_caddy
   update_v2ray
   update_v2ray.sh
