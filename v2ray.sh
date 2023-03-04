@@ -2367,6 +2367,7 @@ update_menu() {
         update_os
         ;;
       5)
+        update_os
         update_caddy
         update_v2ray
         update_v2ray.sh
