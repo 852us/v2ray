@@ -135,6 +135,7 @@ _sys_time() {
 	echo -e "${none}"
 	[[ $IS_OPENV ]] && pause
 }
+
 v2ray_config() {
 	echo
 	while :; do
@@ -170,6 +171,7 @@ v2ray_config() {
 	done
 	v2ray_port_config
 }
+
 v2ray_port_config() {
 	case $v2ray_transport in
 	4 | 5 | 33)
@@ -817,9 +819,9 @@ backup_config() {
 }
 
 get_ip() {
-	# ip=$(curl -s https://ifconfig.me/)
-	export "$(wget -4 -qO- https://dash.cloudflare.com/cdn-cgi/trace | grep ip=)" >/dev/null 2>&1
-	[[ -z $ip ]] && export "$(wget -6 -qO- https://dash.cloudflare.com/cdn-cgi/trace | grep ip=)" >/dev/null 2>&1
+	ip=$(curl -s https://ifconfig.me/)
+	#export "$(wget -4 -qO- https://dash.cloudflare.com/cdn-cgi/trace | grep ip=)" >/dev/null 2>&1
+	#[[ -z $ip ]] && export "$(wget -6 -qO- https://dash.cloudflare.com/cdn-cgi/trace | grep ip=)" >/dev/null 2>&1
 	[[ -z $ip ]] && echo -e "\n$red 获取IP失败, 这垃圾小鸡扔了吧！$none\n" && exit
 }
 
