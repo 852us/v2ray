@@ -734,11 +734,19 @@ install_v2ray() {
   pause
 	$cmd update -y
 	$cmd upgrade -y
+
 	if [[ $cmd == "apt-get" ]]; then
-		$cmd install -y lrzsz git zip unzip curl wget qrencode libcap2-bin dbus
+		modules="lrzsz git zip unzip curl wget libcap2-bin dbus"
 	else
-		$cmd install -y curl git wget lrzsz zip unzip libcap
+		modules="curl git wget lrzsz zip unzip libcap"
 	fi
+
+	for module in modules;
+	do
+	  echo $cmd install -y $module
+	  $cmd install -y $module
+	done
+
   pause
 	ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 	[ -d /etc/v2ray ] && rm -rf /etc/v2ray
