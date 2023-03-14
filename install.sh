@@ -737,8 +737,10 @@ install_v2ray() {
 
 	if [[ $cmd == "apt-get" ]]; then
 		modules="lrzsz git zip unzip curl wget libcap2-bin dbus"
+		echo $modules
 	else
 		modules="curl git wget lrzsz zip unzip libcap"
+		echo $modules
 	fi
 
 	for module in modules;
