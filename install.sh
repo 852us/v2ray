@@ -738,7 +738,6 @@ install_v2ray() {
 	  $cmd install -y $pkg
 	done
 
-  pause
 	ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 	[ -d /etc/v2ray ] && rm -rf /etc/v2ray
 
