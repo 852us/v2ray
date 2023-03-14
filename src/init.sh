@@ -1,8 +1,8 @@
-_red() { echo -e ${red}$*${none}; }
-_green() { echo -e ${green}$*${none}; }
-_yellow() { echo -e ${yellow}$*${none}; }
-_magenta() { echo -e ${magenta}$*${none}; }
-_cyan() { echo -e ${cyan}$*${none}; }
+_red() { echo -e ${red}$*${plain}; }
+_green() { echo -e ${green}$*${plain}; }
+_yellow() { echo -e ${yellow}$*${plain}; }
+_magenta() { echo -e ${magenta}$*${plain}; }
+_cyan() { echo -e ${cyan}$*${plain}; }
 
 _rm() {
 	rm -rf "$@"

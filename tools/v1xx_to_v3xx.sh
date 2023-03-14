@@ -127,6 +127,6 @@ fi
 echo
 echo -e " 哇哦...脚本差点就跪了..."
 echo
-echo -e "\n $yellow 警告: 请重新登录 SSH 以避免出现 v2ray 命令未找到的情况。$none  \n" && exit 1
+echo -e "\n ${yellow} 警告: 请重新登录 SSH 以避免出现 v2ray 命令未找到的情况。${plain}  \n" && exit 1
 echo
 exit 1

@@ -6,7 +6,7 @@ _get_client_file() {
     echo
     echo "---------- V2Ray 客户端配置文件链接 -------------"
     echo
-    echo -e ${cyan}$link${none}
+    echo -e ${cyan}$link${plain}
     echo
     echo " V2Ray 客户端使用教程: https://${magic_url}/post/4/"
     echo

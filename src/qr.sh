@@ -11,10 +11,10 @@ _qr_create() {
 	qrencode -s 1 -m 1 -t ansi "${vmess}"
 	echo
 	echo "如果无法正常显示二维码，请使用下面的链接来生成二维码:"
-	echo -e ${cyan}$link${none}
+	echo -e ${cyan}$link${plain}
 	echo
 	echo
-	echo -e "$red 友情提醒: 请务必核对扫码结果 (V2RayNG 除外) $none"
+	echo -e "${red} 友情提醒: 请务必核对扫码结果 (V2RayNG 除外) ${plain}"
 	echo
 	echo
 	echo " V2Ray 客户端使用教程: https://${magic_url}/post/4/"
@@ -31,9 +31,9 @@ _ss_qr() {
 	qrencode -s 1 -m 1 -t ansi "${ss_link}"
 	echo
 	echo "如果无法正常显示二维码，请使用下面的链接来生成二维码:"
-	echo -e ${cyan}$link${none}
+	echo -e ${cyan}$link${plain}
 	echo
-	echo -e " 温馨提示...$red Shadowsocks Win 4.0.6 $none客户端可能无法识别该二维码"
+	echo -e " 温馨提示...${red} Shadowsocks Win 4.0.6 ${plain}客户端可能无法识别该二维码"
 	echo
 	echo
 }

@@ -70,6 +70,6 @@ mv -f /etc/v2ray/client_backup.conf.tmp /etc/v2ray/client_backup.conf
 echo
 echo -e " .... 哇哦.. .."
 echo
-echo -e " 请使用命令$yellow v2ray reload $none重新加载配置...以避免发生莫名其妙的问题"
+echo -e " 请使用命令${yellow} v2ray reload ${plain}重新加载配置...以避免发生莫名其妙的问题"
 echo
 exit 1

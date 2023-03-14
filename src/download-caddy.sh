@@ -4,9 +4,9 @@ _get_latest_version() {
 
 	if [[ ! $caddy_latest_ver ]]; then
 		echo
-		echo -e " $red获取 Caddy 最新版本失败!!!$none"
+		echo -e " ${red}获取 Caddy 最新版本失败!!!${plain}"
 		echo
-		echo -e " 请尝试执行如下命令: $green echo 'nameserver 8.8.8.8' >/etc/resolv.conf $none"
+		echo -e " 请尝试执行如下命令: ${green} echo 'nameserver 8.8.8.8' >/etc/resolv.conf ${plain}"
 		echo
 		echo " 然后再重新运行脚本...."
 		echo
@@ -23,21 +23,21 @@ _download_caddy_file() {
 	caddy_tmp_file="/tmp/install_caddy/caddy.tar.gz"
 	[[ -d $caddy_tmp ]] && rm -rf $caddy_tmp
 	if [[ ! ${caddy_arch} ]]; then
-		echo -e "$red 获取 Caddy 下载参数失败！$none" && exit 1
+		echo -e "${red} 获取 Caddy 下载参数失败！${plain}" && exit 1
 	fi
 	# local caddy_download_link="https://github.com/caddyserver/caddy/releases/download/v2.6.2/caddy_2.6.2_linux_amd64.tar.gz"
 	local caddy_download_link="https://github.com/caddyserver/caddy/releases/download/${caddy_latest_ver}/caddy_${caddy_latest_ver_num}_linux_${caddy_arch}.tar.gz"
 	mkdir -p $caddy_tmp
 
 	if ! wget --no-check-certificate -O "$caddy_tmp_file" $caddy_download_link; then
-		echo -e "$red 下载 Caddy 失败！$none" && exit 1
+		echo -e "${red} 下载 Caddy 失败！${plain}" && exit 1
 	fi
 
 	tar zxf $caddy_tmp_file -C $caddy_tmp
 	cp -f ${caddy_tmp}caddy /usr/local/bin/
 
 	if [[ ! -f /usr/local/bin/caddy ]]; then
-		echo -e "$red 安装 Caddy 出错！$none" && exit 1
+		echo -e "${red} 安装 Caddy 出错！${plain}" && exit 1
 	fi
 }
 
@@ -86,16 +86,16 @@ _update_caddy_version() {
 	_get_latest_version
 	if [[ $caddy_ver != $caddy_latest_ver ]]; then
 		echo
-		echo -e " $green 咦...发现Caddy程序的新版本耶....正在拼命更新.......$none"
+		echo -e " ${green} 咦...发现Caddy程序的新版本耶....正在拼命更新.......${plain}"
 		echo
 		_download_caddy_file
 		do_service restart caddy
 		echo
-		echo -e " $green 更新成功啦...当前 Caddy 版本: ${cyan}${caddy_latest_ver}$none"
+		echo -e " ${green} 更新成功啦...当前 Caddy 版本: ${cyan}${caddy_latest_ver}${plain}"
 		echo
 	else
 		echo
-		echo -e " $green 木有发现Caddy程序的新版本....$none"
+		echo -e " ${green} 木有发现Caddy程序的新版本....${plain}"
 		echo
 	fi
 }

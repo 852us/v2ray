@@ -77,26 +77,26 @@ _v2_info() {
 	if [[ $v2ray_transport == [45] ]]; then
 		if [[ ! $caddy ]]; then
 			echo
-			echo -e " $red警告！$none$yellow请自行配置 TLS...教程: https://852us.com/post/3/$none"
+			echo -e " ${red}警告！${plain}${yellow}请自行配置 TLS...教程: https://852us.com/post/3/${plain}"
 		fi
 		echo
-		echo -e "$yellow 地址 (Address) = $cyan${domain}$none"
+		echo -e "${yellow} 地址 (Address) = ${cyan}${domain}${plain}"
 		echo
-		echo -e "$yellow 端口 (Port) = ${cyan}443${none}"
+		echo -e "${yellow} 端口 (Port) = ${cyan}443${plain}"
 		echo
-		echo -e "$yellow 用户ID (User ID / UUID) = $cyan${v2ray_id}$none"
+		echo -e "${yellow} 用户ID (User ID / UUID) = ${cyan}${v2ray_id}${plain}"
 		echo
-		echo -e "$yellow 额外ID (Alter Id) = ${cyan}${alterId}${none}"
+		echo -e "${yellow} 额外ID (Alter Id) = ${cyan}${alterId}${plain}"
 		echo
-		echo -e "$yellow 传输协议 (Network) = ${cyan}${net}$none"
+		echo -e "${yellow} 传输协议 (Network) = ${cyan}${net}${plain}"
 		echo
-		echo -e "$yellow 伪装类型 (header type) = ${cyan}${header}$none"
+		echo -e "${yellow} 伪装类型 (header type) = ${cyan}${header}${plain}"
 		echo
-		echo -e "$yellow 伪装域名 (host) = ${cyan}${domain}$none"
+		echo -e "${yellow} 伪装域名 (host) = ${cyan}${domain}${plain}"
 		echo
-		echo -e "$yellow 路径 (path) = ${cyan}${_path}$none"
+		echo -e "${yellow} 路径 (path) = ${cyan}${_path}${plain}"
 		echo
-		echo -e "$yellow 底层传输安全 (TLS) = ${cyan}tls$none"
+		echo -e "${yellow} 底层传输安全 (TLS) = ${cyan}tls${plain}"
 		echo
 		if [[ $ban_ad ]]; then
 			echo " 备注: 广告拦截已开启.."
@@ -104,27 +104,27 @@ _v2_info() {
 		fi
 	elif [[ $v2ray_transport == 33 ]]; then
 		echo
-		echo -e "$green ---提示..这是 VLESS 服务器配置--- $none"
+		echo -e "${green} ---提示..这是 VLESS 服务器配置--- ${plain}"
 		echo
-		echo -e "$yellow 地址 (Address) = $cyan${domain}$none"
+		echo -e "${yellow} 地址 (Address) = ${cyan}${domain}${plain}"
 		echo
-		echo -e "$yellow 端口 (Port) = ${cyan}443${none}"
+		echo -e "${yellow} 端口 (Port) = ${cyan}443${plain}"
 		echo
-		echo -e "$yellow 用户ID (User ID / UUID) = $cyan${v2ray_id}$none"
+		echo -e "${yellow} 用户ID (User ID / UUID) = ${cyan}${v2ray_id}${plain}"
 		echo
-		echo -e "$yellow 流控 (Flow) = ${cyan}空${none}"
+		echo -e "${yellow} 流控 (Flow) = ${cyan}空${plain}"
 		echo
-		echo -e "$yellow 加密 (Encryption) = ${cyan}none${none}"
+		echo -e "${yellow} 加密 (Encryption) = ${cyan}none${plain}"
 		echo
-		echo -e "$yellow 传输协议 (Network) = ${cyan}${net}$none"
+		echo -e "${yellow} 传输协议 (Network) = ${cyan}${net}${plain}"
 		echo
-		echo -e "$yellow 伪装类型 (header type) = ${cyan}${header}$none"
+		echo -e "${yellow} 伪装类型 (header type) = ${cyan}${header}${plain}"
 		echo
-		echo -e "$yellow 伪装域名 (host) = ${cyan}${domain}$none"
+		echo -e "${yellow} 伪装域名 (host) = ${cyan}${domain}${plain}"
 		echo
-		echo -e "$yellow 路径 (path) = ${cyan}${_path}$none"
+		echo -e "${yellow} 路径 (path) = ${cyan}${_path}${plain}"
 		echo
-		echo -e "$yellow 底层传输安全 (TLS) = ${cyan}tls$none"
+		echo -e "${yellow} 底层传输安全 (TLS) = ${cyan}tls${plain}"
 		echo
 		if [[ $ban_ad ]]; then
 			echo " 备注: 广告拦截已开启.."
@@ -132,17 +132,17 @@ _v2_info() {
 		fi
 	else
 		echo
-		echo -e "$yellow 地址 (Address) = $cyan${ip}$none"
+		echo -e "${yellow} 地址 (Address) = ${cyan}${ip}${plain}"
 		echo
-		echo -e "$yellow 端口 (Port) = $cyan$v2ray_port$none"
+		echo -e "${yellow} 端口 (Port) = ${cyan}$v2ray_port${plain}"
 		echo
-		echo -e "$yellow 用户ID (User ID / UUID) = $cyan${v2ray_id}$none"
+		echo -e "${yellow} 用户ID (User ID / UUID) = ${cyan}${v2ray_id}${plain}"
 		echo
-		echo -e "$yellow 额外ID (Alter Id) = ${cyan}${alterId}${none}"
+		echo -e "${yellow} 额外ID (Alter Id) = ${cyan}${alterId}${plain}"
 		echo
-		echo -e "$yellow 传输协议 (Network) = ${cyan}${net}$none"
+		echo -e "${yellow} 传输协议 (Network) = ${cyan}${net}${plain}"
 		echo
-		echo -e "$yellow 伪装类型 (header type) = ${cyan}${header}$none"
+		echo -e "${yellow} 伪装类型 (header type) = ${cyan}${header}${plain}"
 		echo
 	fi
 	if [[ $v2ray_transport -ge 18 && $v2ray_transport -ne 33 ]] && [[ $ban_ad ]]; then
@@ -159,8 +159,8 @@ _v2_info() {
 	echo
 	echo "V2Ray 客户端使用教程: https://852us.com/post/4/"
 	echo
-	echo -e "提示: 输入 $cyan v2ray url $none 可生成 vmess URL 链接 / 输入 $cyan v2ray qr $none 可生成二维码链接"
+	echo -e "提示: 输入 ${cyan} v2ray url ${plain} 可生成 vmess URL 链接 / 输入 ${cyan} v2ray qr ${plain} 可生成二维码链接"
 	echo
-	echo -e "${yellow}免被墙..推荐使用JMS: ${cyan}https://getjms.com${none}"
+	echo -e "${yellow}免被墙..推荐使用JMS: ${cyan}https://getjms.com${plain}"
 	echo
 }

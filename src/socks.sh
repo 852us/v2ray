@@ -10,15 +10,15 @@ _socks_info() {
 	echo
 	echo "---------- Socks 配置信息 -------------"
 	echo
-	echo -e "$yellow 主机 (Hostname) = $cyan${ip}$none"
+	echo -e "${yellow} 主机 (Hostname) = ${cyan}${ip}${plain}"
 	echo
-	echo -e "$yellow 端口 (Port) = $cyan$socks_port$none"
+	echo -e "${yellow} 端口 (Port) = ${cyan}$socks_port${plain}"
 	echo
-	echo -e "$yellow 用户名 (Username) = $cyan$socks_username$none"
+	echo -e "${yellow} 用户名 (Username) = ${cyan}$socks_username${plain}"
 	echo
-	echo -e "$yellow 密码 (Password) = $cyan$socks_userpass$none"
+	echo -e "${yellow} 密码 (Password) = ${cyan}$socks_userpass${plain}"
 	echo
-	echo -e "$yellow Telegram 代理配置链接 = ${cyan}tg://socks?server=${ip}&port=${socks_port}&user=${socks_username}&pass=${socks_userpass}$none"
+	echo -e "${yellow} Telegram 代理配置链接 = ${cyan}tg://socks?server=${ip}&port=${socks_port}&user=${socks_username}&pass=${socks_userpass}${plain}"
 	echo
 }
 _socks_main() {
@@ -26,17 +26,17 @@ _socks_main() {
 
 		while :; do
 			echo
-			echo -e "$yellow 1. $none查看 Socks 配置信息"
+			echo -e "${yellow} 1. ${plain}查看 Socks 配置信息"
 			echo
-			echo -e "$yellow 2. $none修改 Socks 端口"
+			echo -e "${yellow} 2. ${plain}修改 Socks 端口"
 			echo
-			echo -e "$yellow 3. $none修改 Socks 用户名"
+			echo -e "${yellow} 3. ${plain}修改 Socks 用户名"
 			echo
-			echo -e "$yellow 4. $none修改 Socks 密码"
+			echo -e "${yellow} 4. ${plain}修改 Socks 密码"
 			echo
-			echo -e "$yellow 5. $none关闭 Socks"
+			echo -e "${yellow} 5. ${plain}关闭 Socks"
 			echo
-			read -p "$(echo -e "请选择 [${magenta}1-4$none]:")" _opt
+			read -p "$(echo -e "请选择 [${magenta}1-4${plain}]:")" _opt
 			if [[ -z $_opt ]]; then
 				error
 			else
@@ -75,13 +75,13 @@ _socks_main() {
 _socks_ask() {
 	echo
 	echo
-	echo -e " $red大佬...你没有配置 Socks $none...不过现在想要配置的话也是可以的 ^_^"
+	echo -e " ${red}大佬...你没有配置 Socks ${plain}...不过现在想要配置的话也是可以的 ^_^"
 	echo
 	echo
 
 	while :; do
-		echo -e "是否配置 ${yellow}Socks${none} [${magenta}Y/N$none]"
-		read -p "$(echo -e "(默认 [${cyan}N$none]):") " new_socks
+		echo -e "是否配置 ${yellow}Socks${plain} [${magenta}Y/N${plain}]"
+		read -p "$(echo -e "(默认 [${cyan}N${plain}]):") " new_socks
 		[[ -z "$new_socks" ]] && new_socks="n"
 		if [[ "$new_socks" == [Yy] ]]; then
 			echo
@@ -101,7 +101,7 @@ _socks_ask() {
 			break
 		elif [[ "$new_socks" == [Nn] ]]; then
 			echo
-			echo -e " $green已取消配置 Socks ....$none"
+			echo -e " ${green}已取消配置 Socks ....${plain}"
 			echo
 			break
 		else
@@ -114,13 +114,13 @@ disable_socks() {
 	echo
 
 	while :; do
-		echo -e "是否关闭 ${yellow}Socks${none} [${magenta}Y/N$none]"
-		read -p "$(echo -e "(默认 [${cyan}N$none]):") " y_n
+		echo -e "是否关闭 ${yellow}Socks${plain} [${magenta}Y/N${plain}]"
+		read -p "$(echo -e "(默认 [${cyan}N${plain}]):") " y_n
 		[[ -z "$y_n" ]] && y_n="n"
 		if [[ "$y_n" == [Yy] ]]; then
 			echo
 			echo
-			echo -e "$yellow 关闭 Socks = $cyan是$none"
+			echo -e "${yellow} 关闭 Socks = ${cyan}是${plain}"
 			echo "----------------------------------------------------------------"
 			echo
 			pause
@@ -131,12 +131,12 @@ disable_socks() {
 			echo
 			echo
 			echo
-			echo -e "$green Socks 已关闭...不过你也可以随时重新启用 Socks ...只要你喜欢$none"
+			echo -e "${green} Socks 已关闭...不过你也可以随时重新启用 Socks ...只要你喜欢${plain}"
 			echo
 			break
 		elif [[ "$y_n" == [Nn] ]]; then
 			echo
-			echo -e " $green已取消关闭 Socks ....$none"
+			echo -e " ${green}已取消关闭 Socks ....${plain}"
 			echo
 			break
 		else
@@ -149,8 +149,8 @@ socks_port_config() {
 	local random=$(shuf -i20001-65535 -n1)
 	echo
 	while :; do
-		echo -e "请输入 "$yellow"Socks"$none" 端口 ["$magenta"1-65535"$none"]，不能和 "$yellow"V2Ray"$none" 端口相同"
-		read -p "$(echo -e "(默认端口: ${cyan}${random}$none):") " new_socks_port
+		echo -e "请输入 "${yellow}"Socks"${plain}" 端口 ["${magenta}"1-65535"${plain}"]，不能和 "${yellow}"V2Ray"${plain}" 端口相同"
+		read -p "$(echo -e "(默认端口: ${cyan}${random}${plain}):") " new_socks_port
 		[ -z "$new_socks_port" ] && new_socks_port=$random
 		case $new_socks_port in
 		$v2ray_port)
@@ -164,30 +164,30 @@ socks_port_config() {
 			fi
 			if [[ $tls && $new_socks_port == "80" ]] || [[ $tls && $new_socks_port == "443" ]]; then
 				echo
-				echo -e "由于你已选择了 "$green"WebSocket + TLS $none或$green HTTP/2"$none" 传输协议."
+				echo -e "由于你已选择了 "${green}"WebSocket + TLS ${plain}或${green} HTTP/2"${plain}" 传输协议."
 				echo
-				echo -e "所以不能选择 "$magenta"80"$none" 或 "$magenta"443"$none" 端口"
+				echo -e "所以不能选择 "${magenta}"80"${plain}" 或 "${magenta}"443"${plain}" 端口"
 				error
 			elif [[ $dynamicPort ]] && [[ $v2ray_dynamicPort_start == $new_socks_port || $v2ray_dynamicPort_end == $new_socks_port ]]; then
 				echo
-				echo -e " 抱歉，此端口和 V2Ray 动态端口 冲突，当前 V2Ray 动态端口范围为：${cyan}$port_range${none}"
+				echo -e " 抱歉，此端口和 V2Ray 动态端口 冲突，当前 V2Ray 动态端口范围为：${cyan}$port_range${plain}"
 				error
 			elif [[ $dynamicPort ]] && [[ $v2ray_dynamicPort_start -lt $new_socks_port && $new_socks_port -le $v2ray_dynamicPort_end ]]; then
 				echo
-				echo -e " 抱歉，此端口和 V2Ray 动态端口 冲突，当前 V2Ray 动态端口范围为：${cyan}$port_range${none}"
+				echo -e " 抱歉，此端口和 V2Ray 动态端口 冲突，当前 V2Ray 动态端口范围为：${cyan}$port_range${plain}"
 				error
 			elif [[ $shadowsocks && $new_socks_port == $ssport ]]; then
 				echo
-				echo -e "抱歉, 此端口跟 Shadowsocks 端口冲突...当前 Shadowsocks 端口: ${cyan}$ssport$none"
+				echo -e "抱歉, 此端口跟 Shadowsocks 端口冲突...当前 Shadowsocks 端口: ${cyan}$ssport${plain}"
 				error
 			elif [[ $mtproto && $new_socks_port == $mtproto_port ]]; then
 				echo
-				echo -e "抱歉, 此端口跟 MTProto 端口冲突...当前 MTProto 端口: ${cyan}$mtproto_port$none"
+				echo -e "抱歉, 此端口跟 MTProto 端口冲突...当前 MTProto 端口: ${cyan}$mtproto_port${plain}"
 				error
 			else
 				echo
 				echo
-				echo -e "$yellow Socks 端口 = $cyan$new_socks_port$none"
+				echo -e "${yellow} Socks 端口 = ${cyan}$new_socks_port${plain}"
 				echo "----------------------------------------------------------------"
 				echo
 				break
@@ -204,19 +204,19 @@ socks_port_config() {
 socks_user_config() {
 	echo
 	while :; do
-		read -p "$(echo -e "请输入$yellow用户名$none...(默认用户名: ${cyan}852us$none)"): " new_socks_username
+		read -p "$(echo -e "请输入${yellow}用户名${plain}...(默认用户名: ${cyan}852us${plain})"): " new_socks_username
 		[ -z "$new_socks_username" ] && new_socks_username="852us"
 		case $new_socks_username in
 		*[/$]* | *\&*)
 			echo
-			echo -e " 由于这个脚本太辣鸡了..所以用户名不能包含$red / $none或$red $ $none或$red & $none这三个符号.... "
+			echo -e " 由于这个脚本太辣鸡了..所以用户名不能包含${red} / ${plain}或${red} $ ${plain}或${red} & ${plain}这三个符号.... "
 			echo
 			error
 			;;
 		*)
 			echo
 			echo
-			echo -e "$yellow 用户名 = $cyan$new_socks_username$none"
+			echo -e "${yellow} 用户名 = ${cyan}$new_socks_username${plain}"
 			echo "----------------------------------------------------------------"
 			echo
 			break
@@ -228,19 +228,19 @@ socks_user_config() {
 socks_pass_config() {
 	echo
 	while :; do
-		read -p "$(echo -e "请输入$yellow密码$none...(默认密码: ${cyan}852us.com$none)"): " new_socks_userpass
+		read -p "$(echo -e "请输入${yellow}密码${plain}...(默认密码: ${cyan}852us.com${plain})"): " new_socks_userpass
 		[ -z "$new_socks_userpass" ] && new_socks_userpass="852us.com"
 		case $new_socks_userpass in
 		*[/$]* | *\&*)
 			echo
-			echo -e " 由于这个脚本太辣鸡了..所以密码不能包含$red / $none或$red $ $none或$red & $none这三个符号.... "
+			echo -e " 由于这个脚本太辣鸡了..所以密码不能包含${red} / ${plain}或${red} $ ${plain}或${red} & ${plain}这三个符号.... "
 			echo
 			error
 			;;
 		*)
 			echo
 			echo
-			echo -e "$yellow 密码 = $cyan$new_socks_userpass$none"
+			echo -e "${yellow} 密码 = ${cyan}$new_socks_userpass${plain}"
 			echo "----------------------------------------------------------------"
 			echo
 			break
@@ -251,7 +251,7 @@ socks_pass_config() {
 change_socks_user_config() {
 	echo
 	while :; do
-		read -p "$(echo -e "请输入$yellow用户名$none...(当前用户名: ${cyan}$socks_username$none)"): " new_socks_username
+		read -p "$(echo -e "请输入${yellow}用户名${plain}...(当前用户名: ${cyan}$socks_username${plain})"): " new_socks_username
 		[ -z "$new_socks_username" ] && error && continue
 		case $new_socks_username in
 		$socks_username)
@@ -262,14 +262,14 @@ change_socks_user_config() {
 			;;
 		*[/$]* | *\&*)
 			echo
-			echo -e " 由于这个脚本太辣鸡了..所以用户名不能包含$red / $none或$red $ $none或$red & $none这三个符号.... "
+			echo -e " 由于这个脚本太辣鸡了..所以用户名不能包含${red} / ${plain}或${red} $ ${plain}或${red} & ${plain}这三个符号.... "
 			echo
 			error
 			;;
 		*)
 			echo
 			echo
-			echo -e "$yellow 用户名 = $cyan$new_socks_username$none"
+			echo -e "${yellow} 用户名 = ${cyan}$new_socks_username${plain}"
 			echo "----------------------------------------------------------------"
 			echo
 			pause
@@ -286,7 +286,7 @@ change_socks_user_config() {
 change_socks_pass_config() {
 	echo
 	while :; do
-		read -p "$(echo -e "请输入$yellow密码$none...(当前密码: ${cyan}$socks_userpass$none)"): " new_socks_userpass
+		read -p "$(echo -e "请输入${yellow}密码${plain}...(当前密码: ${cyan}$socks_userpass${plain})"): " new_socks_userpass
 		[ -z "$new_socks_userpass" ] && error && continue
 		case $new_socks_userpass in
 		$socks_userpass)
@@ -297,14 +297,14 @@ change_socks_pass_config() {
 			;;
 		*[/$]* | *\&*)
 			echo
-			echo -e " 由于这个脚本太辣鸡了..所以密码不能包含$red / $none或$red $ $none或$red & $none这三个符号.... "
+			echo -e " 由于这个脚本太辣鸡了..所以密码不能包含${red} / ${plain}或${red} $ ${plain}或${red} & ${plain}这三个符号.... "
 			echo
 			error
 			;;
 		*)
 			echo
 			echo
-			echo -e "$yellow 密码 = $cyan$new_socks_userpass$none"
+			echo -e "${yellow} 密码 = ${cyan}$new_socks_userpass${plain}"
 			echo "----------------------------------------------------------------"
 			echo
 			pause
@@ -321,8 +321,8 @@ change_socks_pass_config() {
 change_socks_port_config() {
 	echo
 	while :; do
-		echo -e "请输入新的 "$yellow"Socks"$none" 端口 ["$magenta"1-65535"$none"]"
-		read -p "$(echo -e "(当前端口: ${cyan}${socks_port}$none):") " new_socks_port
+		echo -e "请输入新的 "${yellow}"Socks"${plain}" 端口 ["${magenta}"1-65535"${plain}"]"
+		read -p "$(echo -e "(当前端口: ${cyan}${socks_port}${plain}):") " new_socks_port
 		[ -z "$new_socks_port" ] && error && continue
 		case $new_socks_port in
 		$socks_port)
@@ -341,30 +341,30 @@ change_socks_port_config() {
 			fi
 			if [[ $tls && $new_socks_port == "80" ]] || [[ $tls && $new_socks_port == "443" ]]; then
 				echo
-				echo -e "由于你已选择了 "$green"WebSocket + TLS $none或$green HTTP/2"$none" 传输协议."
+				echo -e "由于你已选择了 "${green}"WebSocket + TLS ${plain}或${green} HTTP/2"${plain}" 传输协议."
 				echo
-				echo -e "所以不能选择 "$magenta"80"$none" 或 "$magenta"443"$none" 端口"
+				echo -e "所以不能选择 "${magenta}"80"${plain}" 或 "${magenta}"443"${plain}" 端口"
 				error
 			elif [[ $dynamicPort ]] && [[ $v2ray_dynamicPort_start == $new_socks_port || $v2ray_dynamicPort_end == $new_socks_port ]]; then
 				echo
-				echo -e " 抱歉，此端口和 V2Ray 动态端口 冲突，当前 V2Ray 动态端口范围为：${cyan}$port_range${none}"
+				echo -e " 抱歉，此端口和 V2Ray 动态端口 冲突，当前 V2Ray 动态端口范围为：${cyan}$port_range${plain}"
 				error
 			elif [[ $dynamicPort ]] && [[ $v2ray_dynamicPort_start -lt $new_socks_port && $new_socks_port -le $v2ray_dynamicPort_end ]]; then
 				echo
-				echo -e " 抱歉，此端口和 V2Ray 动态端口 冲突，当前 V2Ray 动态端口范围为：${cyan}$port_range${none}"
+				echo -e " 抱歉，此端口和 V2Ray 动态端口 冲突，当前 V2Ray 动态端口范围为：${cyan}$port_range${plain}"
 				error
 			elif [[ $shadowsocks && $new_socks_port == $ssport ]]; then
 				echo
-				echo -e "抱歉, 此端口跟 Shadowsocks 端口冲突...当前 Shadowsocks 端口: ${cyan}$ssport$none"
+				echo -e "抱歉, 此端口跟 Shadowsocks 端口冲突...当前 Shadowsocks 端口: ${cyan}$ssport${plain}"
 				error
 			elif [[ $mtproto && $new_socks_port == $mtproto_port ]]; then
 				echo
-				echo -e "抱歉, 此端口跟 MTProto 端口冲突...当前 MTProto 端口: ${cyan}$mtproto_port$none"
+				echo -e "抱歉, 此端口跟 MTProto 端口冲突...当前 MTProto 端口: ${cyan}$mtproto_port${plain}"
 				error
 			else
 				echo
 				echo
-				echo -e "$yellow socks 端口 = $cyan$new_socks_port$none"
+				echo -e "${yellow} socks 端口 = ${cyan}$new_socks_port${plain}"
 				echo "----------------------------------------------------------------"
 				echo
 				pause
