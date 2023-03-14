@@ -149,7 +149,7 @@ v2ray_config() {
 		echo "备注2: [utp | srtp | wechat-video | dtls | wireguard] 分别伪装成 [BT下载 | 视频通话 | 微信视频通话 | DTLS 1.2 数据包 | WireGuard 数据包]"
 		echo
 		read -p "$(echo -e "(默认协议: ${cyan}TCP$none)"):" v2ray_transport
-		[ -z "$v2ray_transport" ] && v2ray_transport=1
+		[ -z "$v2ray_transport" ] && v2ray_transport=4
 		case $v2ray_transport in
 		[1-9] | [1-2][0-9] | 3[0-3])
 			echo
@@ -714,7 +714,6 @@ domain_check() {
 }
 
 install_caddy() {
-	# download caddy file then install
 	_load download-caddy.sh
 	_download_caddy_file
 	_install_caddy_service
@@ -775,7 +774,6 @@ install_v2ray() {
 		exit 1
 	fi
 
-	# download v2ray file then install
 	_load download-v2ray.sh
 	_download_v2ray_file
 	_install_v2ray_service
@@ -795,7 +793,6 @@ config() {
 		v2ray_dynamicPort_end=${v2ray_dynamic_port_end_input}
 	fi
 	_load config.sh
-	# systemctl restart v2ray
 	do_service restart v2ray
 	backup_config
 }
@@ -819,8 +816,6 @@ backup_config() {
 
 get_ip() {
 	ip=$(curl -s https://ifconfig.me/)
-	#export "$(wget -4 -qO- https://dash.cloudflare.com/cdn-cgi/trace | grep ip=)" >/dev/null 2>&1
-	#[[ -z $ip ]] && export "$(wget -6 -qO- https://dash.cloudflare.com/cdn-cgi/trace | grep ip=)" >/dev/null 2>&1
 	[[ -z $ip ]] && echo -e "\n$red 获取IP失败, 这垃圾小鸡扔了吧！$none\n" && exit
 }
 
@@ -873,7 +868,6 @@ install() {
 	blocked_hosts
 	shadowsocks_config
 	install_info
-	# [[ $caddy ]] && domain_check
 	install_v2ray
 	if [[ $caddy || $v2ray_port == "80" ]]; then
 		if [[ $cmd == "yum" ]]; then
