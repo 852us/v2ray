@@ -732,7 +732,7 @@ install_v2ray() {
 	$cmd update -y
 	$cmd upgrade -y
 
-  pkgs="curl git wget lrzsz zip unzip libcap"
+  pkgs="curl git wget zip unzip"
   echo $pkgs
 
 	for pkg in $pkgs;
