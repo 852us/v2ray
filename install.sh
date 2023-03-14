@@ -722,10 +722,7 @@ install_caddy() {
 
 }
 caddy_config() {
-	# local email=$(shuf -i1-10000000000 -n1)
 	_load caddy-config.sh
-
-	# systemctl restart caddy
 	do_service restart caddy
 }
 
@@ -743,7 +740,7 @@ install_v2ray() {
 		echo $modules
 	fi
 
-	for module in modules;
+	for module in $modules;
 	do
 	  echo $cmd install -y $module
 	  $cmd install -y $module
