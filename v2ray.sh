@@ -331,9 +331,7 @@ shadowsocks_config() {
       sspass=$new_sspass
       ssciphers=$new_ssciphers
       config
-      clear
       view_shadowsocks_config_info
-      # get_shadowsocks_config_qr_ask
       break
     elif [[ "$install_shadowsocks" == [Nn] ]]; then
       echo
@@ -508,9 +506,7 @@ change_shadowsocks_port() {
         backup_config ssport
         ssport=$new_ssport
         config
-        clear
         view_shadowsocks_config_info
-        # get_shadowsocks_config_qr_ask
         break
       fi
       ;;
@@ -549,9 +545,7 @@ change_shadowsocks_password() {
       backup_config sspass
       sspass=$new_sspass
       config
-      clear
       view_shadowsocks_config_info
-      # get_shadowsocks_config_qr_ask
       break
       ;;
     esac
@@ -587,9 +581,7 @@ change_shadowsocks_ciphers() {
       backup_config ssciphers
       ssciphers=$new_ssciphers
       config
-      clear
       view_shadowsocks_config_info
-      # get_shadowsocks_config_qr_ask
       break
       ;;
     *)
@@ -615,7 +607,6 @@ disable_shadowsocks() {
       backup_config -ss
       shadowsocks=''
       config
-      # clear
       echo
       echo
       echo
@@ -771,9 +762,7 @@ change_v2ray_port() {
           backup_config v2ray_port
           v2ray_port=$v2ray_port_opt
           config
-          clear
           view_v2ray_config_info
-          # download_v2ray_config_ask
           break
         fi
         ;;
@@ -909,17 +898,13 @@ change_v2ray_transport() {
     port_range="${v2ray_dynamic_port_start_input}-${v2ray_dynamic_port_end_input}"
     v2ray_transport=$v2ray_transport_opt
     config
-    clear
     view_v2ray_config_info
-    # download_v2ray_config_ask
   else
     old_transport
     backup_config v2ray_transport
     v2ray_transport=$v2ray_transport_opt
     config
-    clear
     view_v2ray_config_info
-    # download_v2ray_config_ask
   fi
 }
 
@@ -994,7 +979,6 @@ tls_config() {
   if [[ $caddy ]]; then
     path_config_ask
     pause
-    # domain_check
     backup_config v2ray_transport domain
     if [[ $new_path ]]; then
       backup_config +path
@@ -1013,9 +997,7 @@ tls_config() {
     v2ray_transport=$v2ray_transport_opt
     caddy_config
     config
-    clear
     view_v2ray_config_info
-    # download_v2ray_config_ask
   else
     if [[ $v2ray_transport_opt -ne 4 ]]; then
       path_config_ask
@@ -1034,9 +1016,7 @@ tls_config() {
       caddy_config
       config
       caddy=true
-      clear
       view_v2ray_config_info
-      # download_v2ray_config_ask
     else
       auto_tls_config
     fi
@@ -1085,9 +1065,7 @@ auto_tls_config() {
         caddy_config
         config
         caddy=true
-        clear
         view_v2ray_config_info
-        # download_v2ray_config_ask
         break
       elif [[ "$auto_install_caddy" == [Nn] ]]; then
         echo
@@ -1101,9 +1079,7 @@ auto_tls_config() {
         domain=$new_domain
         v2ray_transport=$v2ray_transport_opt
         config
-        clear
         view_v2ray_config_info
-        # download_v2ray_config_ask
         break
       else
         error
@@ -1328,7 +1304,6 @@ change_v2ray_dynamicport() {
     backup_config v2ray_dynamicPort_start v2ray_dynamicPort_end
     port_range="${v2ray_dynamic_port_start_input}-${v2ray_dynamic_port_end_input}"
     config
-    # clear
     echo
     echo -e "$green 动态端口修改成功啦...你不需要修改 V2Ray 客户端配置...保持原有的配置即可...$none"
     echo
@@ -1495,9 +1470,7 @@ change_v2ray_id() {
         backup_config uuid
         v2ray_id=$uuid
         config
-        clear
         view_v2ray_config_info
-        # download_v2ray_config_ask
         break
       elif [[ $y_n == [Nn] ]]; then
         echo
@@ -1542,7 +1515,6 @@ change_domain() {
     echo
 
     while :; do
-
       read -p "$(echo -e "(是否已经正确解析: [${magenta}Y$none]):") " record
       if [[ -z "$record" ]]; then
         error
@@ -1555,14 +1527,11 @@ change_domain() {
           echo "----------------------------------------------------------------"
           echo
           pause
-          # domain_check
           backup_config domain
           domain=$new_domain
           caddy_config
           config
-          clear
           view_v2ray_config_info
-          # download_v2ray_config_ask
           break
         else
           error
@@ -1622,9 +1591,7 @@ change_path_config() {
     path=$new_path
     caddy_config
     config
-    clear
     view_v2ray_config_info
-    # download_v2ray_config_ask
   elif [[ $v2ray_transport == [45] || $v2ray_transport == 33 ]] && [[ $caddy ]]; then
     path_config_ask
     if [[ $new_path ]]; then
@@ -1634,9 +1601,7 @@ change_path_config() {
       is_path=true
       caddy_config
       config
-      clear
       view_v2ray_config_info
-      # download_v2ray_config_ask
     else
       echo
       echo
@@ -1711,9 +1676,7 @@ change_proxy_site_config() {
       is_path=true
       caddy_config
       config
-      clear
       view_v2ray_config_info
-      # download_v2ray_config_ask
     else
       echo
       echo
@@ -1774,9 +1737,7 @@ disable_path() {
         is_path=''
         caddy_config
         config
-        clear
         view_v2ray_config_info
-        # download_v2ray_config_ask
         break
       elif [[ "$y_n" == [Nn] ]]; then
         echo
@@ -1909,9 +1870,7 @@ change_v2ray_alterId() {
       backup_config alterId
       alterId=$new_alterId
       config
-      clear
       view_v2ray_config_info
-      # download_v2ray_config_ask
       break
       ;;
     *)
@@ -1953,9 +1912,7 @@ custom_uuid() {
       backup_config uuid
       v2ray_id=$uuid
       config
-      clear
       view_v2ray_config_info
-      # download_v2ray_config_ask
       break
       ;;
     esac
@@ -2014,7 +1971,6 @@ start_v2ray() {
     echo -e "${green} V2Ray 正在运行...无需再启动$none"
   else
     systemctl start caddy v2ray >/dev/null 2>&1
-    # service v2ray start >/dev/null 2>&1
     if [[ $? -ne 0 ]]; then
       echo -e "${red} V2Ray 启动失败！$none"
     else
@@ -2028,7 +1984,6 @@ stop_v2ray() {
   status_v2ray
   if [[ $v2ray_pid ]]; then
     systemctl stop caddy v2ray >/dev/null 2>&1
-    # service v2ray stop >/dev/null 2>&1
     echo -e "${green} V2Ray 与 caddy 已停止$none"
   else
     echo -e "${red} V2Ray 或 caddy 没有在运行$none"
@@ -2551,9 +2506,7 @@ backup_config() {
 }
 
 get_ip() {
-  # ip=$(curl -s https://ifconfig.me/)
-  export "$(wget -4 -qO- https://dash.cloudflare.com/cdn-cgi/trace | grep ip=)" >/dev/null 2>&1
-  [[ -z $ip ]] && export "$(wget -6 -qO- https://dash.cloudflare.com/cdn-cgi/trace | grep ip=)" >/dev/null 2>&1
+  ip=$(curl -s https://ifconfig.me/)
   [[ -z $ip ]] && echo -e "\n$red 获取IP失败, 这垃圾小鸡扔了吧！$none\n" && exit
 }
 
@@ -2575,7 +2528,6 @@ do_service() {
 }
 
 _help() {
-  echo
   echo "........... V2Ray 管理脚本帮助信息 by  .........."
   echo -e "
 	${green}v2ray menu $none管理 V2Ray (同等于直接输入 v2ray)
@@ -2602,45 +2554,25 @@ _help() {
 }
 
 menu() {
-  clear
   while :; do
-    echo
     echo "........... V2Ray 管理脚本 $_version by  .........."
-    echo
     echo -e "## V2Ray 版本: $cyan$v2ray_ver$none  /  V2Ray 状态: $v2ray_status ##"
-    echo
     echo "帮助说明: https://${magic_url}/post/1/"
-    echo
     echo "反馈问题: https://github.com/${magic}/v2ray/issues"
-    echo
     echo "TG 频道: https://t.me/tg2333"
-    echo
     echo "捐赠脚本作者: https://${magic_url}/donate/"
-    echo
     echo -e "$yellow  1. $none查看 V2Ray 配置"
-    echo
     echo -e "$yellow  2. $none修改 V2Ray 配置"
-    echo
     echo -e "$yellow  3. $none下载 V2Ray 配置 / 生成配置信息链接 / 生成二维码链接"
-    echo
     echo -e "$yellow  4. $none查看 Shadowsocks 配置 / 生成二维码链接"
-    echo
     echo -e "$yellow  5. $none修改 Shadowsocks 配置"
-    echo
     echo -e "$yellow  6. $none查看 MTProto 配置 / 修改 MTProto 配置"
-    echo
     echo -e "$yellow  7. $none查看 Socks5 配置 / 修改 Socks5 配置"
-    echo
     echo -e "$yellow  8. $none启动 / 停止 / 重启 / 查看日志"
-    echo
     echo -e "$yellow  9. $none更新 V2Ray / 更新 V2Ray 管理脚本 / 更新 Caddy / 更新 OS"
-    echo
     echo -e "$yellow 10. $none卸载 V2Ray"
-    echo
     echo -e "$yellow 11. $none其他"
-    echo
     echo -e "温馨提示...如果你不想执行选项...按$yellow Ctrl + C $none即可退出"
-    echo
     read -p "$(echo -e "请选择菜单 [${magenta}1-11$none]:")" choose
     if [[ -z $choose ]]; then
       exit 1
@@ -2767,7 +2699,6 @@ reload)
   if [[ $v2ray_transport == [45] || $v2ray_transport == 33 ]] && [[ $caddy ]]; then
     caddy_config
   fi
-  clear
   view_v2ray_config_info
   ;;
 time)
@@ -2820,7 +2751,6 @@ reuuid)
   backup_config uuid
   v2ray_id=$uuid
   config
-  clear
   view_v2ray_config_info
   ;;
 v | version)
