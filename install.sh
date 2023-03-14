@@ -730,17 +730,19 @@ caddy_config() {
 }
 
 install_v2ray() {
+  echo $cmd
+  pause
 	$cmd update -y
 	$cmd upgrade -y
 	if [[ $cmd == "apt-get" ]]; then
 		$cmd install -y lrzsz git zip unzip curl wget qrencode libcap2-bin dbus
 	else
-		# $cmd install -y lrzsz git zip unzip curl wget qrencode libcap iptables-services
 		$cmd install -y lrzsz git zip unzip curl wget qrencode libcap
 	fi
+
 	ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 	[ -d /etc/v2ray ] && rm -rf /etc/v2ray
-	# date -s "$(curl -sI g.cn | grep Date | cut -d' ' -f3-6)Z"
+
 	_sys_timezone
 	_sys_time
 
