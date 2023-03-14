@@ -726,8 +726,6 @@ caddy_config() {
 }
 
 install_v2ray() {
-  echo $cmd
-  pause
 	$cmd update -y
 	$cmd upgrade -y
 
