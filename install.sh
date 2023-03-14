@@ -732,18 +732,13 @@ install_v2ray() {
 	$cmd update -y
 	$cmd upgrade -y
 
-	if [[ $cmd == "apt-get" ]]; then
-		modules="lrzsz git zip unzip curl wget libcap2-bin dbus"
-		echo $modules
-	else
-		modules="curl git wget lrzsz zip unzip libcap"
-		echo $modules
-	fi
+  pkgs="curl git wget lrzsz zip unzip libcap"
+  echo $pkgs
 
-	for module in $modules;
+	for pkg in $pkgs;
 	do
-	  echo $cmd install -y $module
-	  $cmd install -y $module
+	  echo $cmd install -y $pkg
+	  $cmd install -y $pkg
 	done
 
   pause
